@@ -1,0 +1,1219 @@
+<!--
+  MAISON LAUNDRIN — PRIMALS-STYLE LISTICLE TEMPLATE
+  ==================================================
+  Visual, section-based conversion page with urgency elements,
+  alternating image/text blocks, benefit marquee, review cards,
+  product buy box, FAQ accordion, and sticky CTA.
+
+  FORMAT: Paste into Shopify Page (HTML mode) or host standalone.
+  IMAGES: Replace placeholder src values with actual Shopify CDN URLs.
+  LINKS: Replace #shop-now with actual product/collection URL.
+-->
+
+<style>
+/* === HIDE SHOPIFY CHROME === */
+.header-sticky-wrapper,
+#HeaderWrapper,
+.site-header,
+.site-footer,
+.shopify-section-footer,
+.shopify-section-group-header-group,
+.shopify-section-group-footer-group,
+.section-header,
+.page-content > .section-header,
+#shopify-section-announcement-bar,
+.announcement-bar,
+.cart-drawer,
+.toolbar,
+#shopify-section-header,
+#shopify-section-footer {
+  display: none !important;
+}
+
+/* === RESET & BASE === */
+.ml-listicle * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.ml-listicle {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  color: #1a1a1a;
+  line-height: 1.7;
+  background: #fff;
+  overflow-x: hidden;
+}
+
+.ml-listicle img {
+  max-width: 100%;
+  display: block;
+}
+
+/* === STICKY URGENCY BAR === */
+.ml-sticky-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: #1a1a1a;
+  color: #fff;
+  text-align: center;
+  padding: 10px 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 0.82em;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.ml-sticky-bar .ml-timer {
+  font-weight: 700;
+  color: #d4a76a;
+  font-variant-numeric: tabular-nums;
+}
+
+.ml-sticky-bar .ml-stock-msg {
+  color: #e8d5b7;
+}
+
+.ml-sticky-btn {
+  background: #d4a76a;
+  color: #1a1a1a;
+  padding: 6px 18px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9em;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.ml-sticky-btn:hover {
+  background: #c4974f;
+}
+
+/* === HERO === */
+.ml-hero {
+  padding: 100px 24px 60px;
+  text-align: center;
+  background: linear-gradient(180deg, #faf8f5 0%, #fff 100%);
+  max-width: 100%;
+}
+
+.ml-hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.ml-hero-eyebrow {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #d4a76a;
+  margin-bottom: 16px;
+}
+
+.ml-hero h1 {
+  font-size: 2.6em;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.ml-hero-sub {
+  font-size: 1.15em;
+  color: #555;
+  line-height: 1.65;
+  margin-bottom: 32px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ml-hero-cta {
+  display: inline-block;
+  background: #1a1a1a;
+  color: #fff;
+  padding: 16px 40px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: background 0.2s;
+  margin-bottom: 12px;
+}
+
+.ml-hero-cta:hover {
+  background: #333;
+}
+
+.ml-hero-note {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 0.8em;
+  color: #999;
+  margin-top: 8px;
+}
+
+.ml-hero-img {
+  max-width: 400px;
+  margin: 32px auto 0;
+  border-radius: 12px;
+}
+
+/* === BENEFIT MARQUEE === */
+.ml-marquee-wrap {
+  background: #1a1a1a;
+  padding: 16px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ml-marquee {
+  display: inline-flex;
+  animation: ml-scroll 25s linear infinite;
+}
+
+.ml-marquee span {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 0.85em;
+  font-weight: 500;
+  color: #e8d5b7;
+  padding: 0 32px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@keyframes ml-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* === REASON SECTIONS === */
+.ml-reason {
+  padding: 72px 24px;
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.ml-reason:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.ml-reason-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.ml-reason-img {
+  flex: 1;
+  min-width: 0;
+}
+
+.ml-reason-img img {
+  border-radius: 12px;
+  width: 100%;
+}
+
+.ml-reason-eyebrow {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 0.7em;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #d4a76a;
+  margin-bottom: 10px;
+}
+
+.ml-reason h2 {
+  font-size: 1.85em;
+  line-height: 1.25;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+}
+
+.ml-reason-body {
+  font-size: 1.05em;
+  color: #444;
+  margin-bottom: 24px;
+  line-height: 1.75;
+}
+
+.ml-icon-list {
+  list-style: none;
+  padding: 0;
+}
+
+.ml-icon-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 18px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 0.95em;
+  line-height: 1.55;
+  color: #333;
+}
+
+.ml-icon-list li .ml-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  background: #faf5ee;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1em;
+}
+
+.ml-icon-list li strong {
+  display: block;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 2px;
+}
+
+.ml-reason-divider {
+  border: none;
+  border-top: 1px solid #eee;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* === INLINE CTA === */
+.ml-inline-cta {
+  text-align: center;
+  padding: 48px 24px;
+  background: #faf8f5;
+}
+
+.ml-inline-cta a {
+  display: inline-block;
+  background: #1a1a1a;
+  color: #fff;
+  padding: 16px 40px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: background 0.2s;
+}
+
+.ml-inline-cta a:hover {
+  background: #333;
+}
+
+.ml-inline-cta p {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 0.82em;
+  color: #999;
+  margin-top: 10px;
+}
+
+/* === REVIEWS SECTION === */
+.ml-reviews {
+  padding: 72px 24px;
+  background: #faf8f5;
+}
+
+.ml-reviews-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.ml-reviews-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.ml-reviews-header h2 {
+  font-size: 2em;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.ml-reviews-header p {
+  font-size: 1.05em;
+  color: #666;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+.ml-reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.ml-review-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px;
+  border: 1px solid #eee;
+}
+
+.ml-review-stars {
+  color: #d4a76a;
+  font-size: 1.1em;
+  margin-bottom: 14px;
+  letter-spacing: 2px;
+}
+
+.ml-review-quote {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.ml-review-body {
+  font-size: 0.92em;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.ml-review-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+.ml-review-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85em;
+  color: #999;
+}
+
+.ml-review-name {
+  font-size: 0.88em;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.ml-review-badge {
+  font-size: 0.72em;
+  color: #999;
+  display: block;
+}
+
+/* === TRUST BAR === */
+.ml-trust-bar {
+  background: #1a1a1a;
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.ml-trust-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  max-width: 700px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.ml-trust-item {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 0.78em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #e8d5b7;
+}
+
+/* === PRODUCT BUY BOX === */
+.ml-buybox {
+  padding: 72px 24px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.ml-buybox-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.ml-buybox-header h2 {
+  font-size: 2em;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.ml-buybox-header p {
+  font-size: 1.05em;
+  color: #666;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+.ml-buybox-content {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.ml-buybox-images {
+  flex: 1;
+  min-width: 0;
+}
+
+.ml-buybox-images img {
+  border-radius: 12px;
+  width: 100%;
+}
+
+.ml-buybox-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.ml-buybox-title {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.ml-buybox-price {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+}
+
+.ml-buybox-rating {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 0.88em;
+  color: #d4a76a;
+  margin-bottom: 20px;
+}
+
+.ml-buybox-benefits {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 28px;
+}
+
+.ml-buybox-benefits li {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 0.95em;
+  color: #333;
+  padding: 8px 0;
+  padding-left: 28px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.ml-buybox-benefits li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  color: #d4a76a;
+  font-weight: 700;
+}
+
+.ml-buybox-cta {
+  display: block;
+  background: #1a1a1a;
+  color: #fff;
+  padding: 18px 40px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 1.05em;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-align: center;
+  transition: background 0.2s;
+  margin-bottom: 12px;
+}
+
+.ml-buybox-cta:hover {
+  background: #333;
+}
+
+.ml-buybox-guarantee {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 0.8em;
+  color: #999;
+  text-align: center;
+}
+
+/* === FAQ SECTION === */
+.ml-faq {
+  padding: 72px 24px;
+  background: #faf8f5;
+}
+
+.ml-faq-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.ml-faq h2 {
+  font-size: 2em;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.ml-faq-item {
+  border-bottom: 1px solid #ddd;
+  padding: 20px 0;
+}
+
+.ml-faq-q {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 1.05em;
+  font-weight: 700;
+  color: #1a1a1a;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.ml-faq-q::after {
+  content: "+";
+  font-size: 1.3em;
+  font-weight: 300;
+  color: #999;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.ml-faq-item.open .ml-faq-q::after {
+  content: "\2212";
+}
+
+.ml-faq-a {
+  font-size: 0.95em;
+  color: #555;
+  line-height: 1.75;
+  padding-top: 14px;
+  display: none;
+}
+
+.ml-faq-item.open .ml-faq-a {
+  display: block;
+}
+
+/* === CLOSING CTA === */
+.ml-closing-cta {
+  padding: 72px 24px;
+  text-align: center;
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.ml-closing-cta h2 {
+  font-size: 2em;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.3;
+}
+
+.ml-closing-cta p {
+  font-size: 1.05em;
+  color: #ccc;
+  margin-bottom: 32px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.65;
+}
+
+.ml-closing-btn {
+  display: inline-block;
+  background: #d4a76a;
+  color: #1a1a1a;
+  padding: 16px 40px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 1.05em;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  transition: background 0.2s;
+}
+
+.ml-closing-btn:hover {
+  background: #c4974f;
+}
+
+/* === FOOTER === */
+.ml-footer {
+  padding: 24px;
+  text-align: center;
+  background: #111;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 0.75em;
+  color: #666;
+}
+
+.ml-footer a {
+  color: #888;
+  text-decoration: none;
+}
+
+.ml-footer a:hover {
+  text-decoration: underline;
+}
+
+/* === MOBILE STICKY CTA (appears on scroll) === */
+.ml-mobile-cta {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9998;
+  background: #fff;
+  padding: 12px 16px;
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.ml-mobile-cta a {
+  display: block;
+  background: #1a1a1a;
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  font-weight: 700;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .ml-sticky-bar {
+    font-size: 0.72em;
+    padding: 8px 12px;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .ml-hero {
+    padding: 80px 20px 48px;
+  }
+
+  .ml-hero h1 {
+    font-size: 1.75em;
+  }
+
+  .ml-hero-sub {
+    font-size: 1em;
+  }
+
+  .ml-reason {
+    flex-direction: column !important;
+    padding: 48px 20px;
+    gap: 28px;
+  }
+
+  .ml-reason h2 {
+    font-size: 1.45em;
+  }
+
+  .ml-reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .ml-buybox-content {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .ml-trust-bar-inner {
+    gap: 24px;
+  }
+
+  .ml-mobile-cta {
+    display: block;
+  }
+
+  .ml-closing-cta h2 {
+    font-size: 1.5em;
+  }
+}
+</style>
+
+<div class="ml-listicle">
+
+  <!-- ========== STICKY URGENCY BAR ========== -->
+  <div class="ml-sticky-bar">
+    <span class="ml-stock-msg">Discovery Sets are selling fast</span>
+    <span class="ml-timer" id="ml-countdown">23:47</span>
+    <a href="#shop-now" class="ml-sticky-btn">Try the Discovery Set</a>
+  </div>
+
+  <!-- ========== HERO ========== -->
+  <section class="ml-hero">
+    <div class="ml-hero-inner">
+      <div class="ml-hero-eyebrow">Trusted by thousands of women who refuse to settle</div>
+      <h1>5 Reasons Women Over 50 Are Switching to This Luxury Laundry Detergent</h1>
+      <p class="ml-hero-sub">Your detergent was designed for grass stains and ketchup. Your life has moved on. Shouldn't your laundry?</p>
+      <a href="#shop-now" class="ml-hero-cta">Discover Your Signature Scent</a>
+      <p class="ml-hero-note">Free shipping on the Discovery Set &middot; 60-Day Guarantee</p>
+      <!-- REPLACE: Hero product image -->
+      <img class="ml-hero-img" src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/ml-discovery-set-hero.png" alt="Maison Laundrin Discovery Set with four luxury scent bottles">
+    </div>
+  </section>
+
+  <!-- ========== BENEFIT MARQUEE ========== -->
+  <div class="ml-marquee-wrap">
+    <div class="ml-marquee" id="ml-marquee">
+      <span>Scent That Lasts 5-7 Days</span>
+      <span>3-Stage Enzyme System</span>
+      <span>Crafted by Master Perfumers</span>
+      <span>Plant-Based &middot; No Harsh Chemicals</span>
+      <span>Dermatologist Tested</span>
+      <span>Replaces Candles, Sprays &amp; Dryer Sheets</span>
+      <span>Scent That Lasts 5-7 Days</span>
+      <span>3-Stage Enzyme System</span>
+      <span>Crafted by Master Perfumers</span>
+      <span>Plant-Based &middot; No Harsh Chemicals</span>
+      <span>Dermatologist Tested</span>
+      <span>Replaces Candles, Sprays &amp; Dryer Sheets</span>
+    </div>
+  </div>
+
+  <!-- ========== REASON 1 ========== -->
+  <div class="ml-reason">
+    <div class="ml-reason-text">
+      <div class="ml-reason-eyebrow">The Hidden Problem</div>
+      <h2>1. Your Fabrics Are Carrying Invisible Buildup That Detergent Can't Touch</h2>
+      <p class="ml-reason-body">After 40, your body chemistry changes. Natural oils oxidize and bond deep inside fabric fibers &mdash; layer by invisible layer, wash after wash. Standard detergent was never engineered to reach it.</p>
+      <ul class="ml-icon-list">
+        <li>
+          <div class="ml-icon">&#128167;</div>
+          <div><strong>Oil-Based Residue</strong>As we age, natural skin oils oxidize and embed into fabric. Water-based detergents slide right over them.</div>
+        </li>
+        <li>
+          <div class="ml-icon">&#129533;</div>
+          <div><strong>Invisible Buildup</strong>Every wash cycle adds another layer on top of what's already there. Your "clean" clothes aren't as clean as they feel.</div>
+        </li>
+        <li>
+          <div class="ml-icon">&#128083;</div>
+          <div><strong>Flat, Stale Scent</strong>That vague staleness on sheets by Wednesday? That's accumulated residue your Tide was never built to handle.</div>
+        </li>
+        <li>
+          <div class="ml-icon">&#8986;</div>
+          <div><strong>30 Years of the Wrong Tool</strong>Grocery store detergent fights grass stains and ketchup. It was built for the woman you were at 35 &mdash; not the woman you are now.</div>
+        </li>
+      </ul>
+    </div>
+    <div class="ml-reason-img">
+      <!-- REPLACE: Image showing the problem (before/flat laundry) -->
+      <img src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/ml-reason-1-buildup.jpg" alt="Woman examining fabric, looking puzzled by flat scent">
+    </div>
+  </div>
+  <hr class="ml-reason-divider">
+
+  <!-- ========== REASON 2 ========== -->
+  <div class="ml-reason">
+    <div class="ml-reason-text">
+      <div class="ml-reason-eyebrow">Why Nothing Lasts</div>
+      <h2>2. Dryer Sheets, Candles &amp; Linen Sprays Are a $125/Month Band-Aid</h2>
+      <p class="ml-reason-body">You've been layering products &mdash; Yankee Candles, Febreze, Bounce sheets, Downy Unstopables, plug-ins &mdash; trying to create a scent that stays. None of them work because they all sit on the surface. The moment air hits them, they're gone.</p>
+      <ul class="ml-icon-list">
+        <li>
+          <div class="ml-icon">&#128367;</div>
+          <div><strong>Candles: $56/month</strong>Scent one room while they burn. Thirty minutes later, nothing. You're paying to perfume the air, not the fabric.</div>
+        </li>
+        <li>
+          <div class="ml-icon">&#128168;</div>
+          <div><strong>Plug-Ins: $36/month</strong>Your nose stops registering them after 3 days. But the plastic dispenser keeps pumping chemicals into your air.</div>
+        </li>
+        <li>
+          <div class="ml-icon">&#128166;</div>
+          <div><strong>Linen Spray: $14/month</strong>One spritz, one evening. Evaporated by morning. A $14 bottle of false hope.</div>
+        </li>
+        <li>
+          <div class="ml-icon">&#9898;</div>
+          <div><strong>Dryer Sheets &amp; Beads: $19/month</strong>Forty-five minutes of scent. By the time you fold and put clothes away, it's already gone.</div>
+        </li>
+      </ul>
+    </div>
+    <div class="ml-reason-img">
+      <!-- REPLACE: Image showing cabinet of half-used products -->
+      <img src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/ml-reason-2-products.jpg" alt="Cabinet full of candles, sprays, and dryer sheets that don't work">
+    </div>
+  </div>
+  <hr class="ml-reason-divider">
+
+  <!-- ========== REASON 3 ========== -->
+  <div class="ml-reason">
+    <div class="ml-reason-text">
+      <div class="ml-reason-eyebrow">Why Perfume Stopped Working</div>
+      <h2>3. It's Not Your Imagination &mdash; Your Perfume Really Does Disappear Faster Now</h2>
+      <p class="ml-reason-body">After menopause, declining estrogen reduces the natural oils perfume needs to bind to skin. Your $120 bottle of Jo Malone vanishes within an hour &mdash; not because it's weak, but because your skin chemistry changed. The solution isn't more perfume. It's fragrance that bonds to fabric instead.</p>
+      <ul class="ml-icon-list">
+        <li>
+          <div class="ml-icon">&#127800;</div>
+          <div><strong>Perfume Needs Skin Oil</strong>Fragrance binds to sebum on your skin. After menopause, sebum production drops dramatically. Perfume has nothing to hold onto.</div>
+        </li>
+        <li>
+          <div class="ml-icon">&#10024;</div>
+          <div><strong>Fabric Holds Scent Better</strong>Micro-encapsulated fragrance bonds into fabric fibers &mdash; not skin. Friction-activated, it releases all day as you move.</div>
+        </li>
+        <li>
+          <div class="ml-icon">&#128139;</div>
+          <div><strong>Compliments Return</strong>Women report getting asked "What perfume are you wearing?" within the first two weeks &mdash; without wearing any perfume at all.</div>
+        </li>
+      </ul>
+    </div>
+    <div class="ml-reason-img">
+      <!-- REPLACE: Elegant woman receiving a compliment -->
+      <img src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/ml-reason-3-perfume.jpg" alt="Elegant woman smiling after receiving a compliment">
+    </div>
+  </div>
+  <hr class="ml-reason-divider">
+
+  <!-- ========== REASON 4 ========== -->
+  <div class="ml-reason">
+    <div class="ml-reason-text">
+      <div class="ml-reason-eyebrow">Your Skin Deserves Better</div>
+      <h2>4. Mainstream Detergents Are Loaded With Chemicals Your Skin Shouldn't Touch</h2>
+      <p class="ml-reason-body">As skin becomes more delicate with age, the harsh chemicals in everyday detergent matter more. Optical brighteners, SLS, phthalates, and synthetic dyes sit in your fabric and press against your skin for 12+ hours a day. Your sheets. Your blouse. Your pajamas.</p>
+      <ul class="ml-icon-list">
+        <li>
+          <div class="ml-icon">&#127807;</div>
+          <div><strong>100% Plant-Based</strong>Plant-derived surfactants that clean without irritation. No SLS, no optical brighteners, no synthetic shortcuts.</div>
+        </li>
+        <li>
+          <div class="ml-icon">&#128137;</div>
+          <div><strong>Dermatologist Tested</strong>Formulated for sensitive, mature skin. No phthalates, no phosphates, no artificial dyes, no hormone disruptors.</div>
+        </li>
+        <li>
+          <div class="ml-icon">&#128172;</div>
+          <div><strong>Read Every Ingredient</strong>No mystery chemicals. Every ingredient is there for a reason you can understand &mdash; and none of them are there to cut costs.</div>
+        </li>
+      </ul>
+    </div>
+    <div class="ml-reason-img">
+      <!-- REPLACE: Clean ingredients / botanical image -->
+      <img src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/ml-reason-4-clean.jpg" alt="Plant-based ingredients and clean formula">
+    </div>
+  </div>
+
+  <!-- ========== INLINE CTA ========== -->
+  <div class="ml-inline-cta">
+    <a href="#shop-now">Try the Discovery Set &mdash; $49 with Free Shipping</a>
+    <p>60-Day Double-Scent Promise &middot; Keep the bottles if you're not amazed</p>
+  </div>
+
+  <!-- ========== REASON 5 (THE SOLUTION) ========== -->
+  <div class="ml-reason">
+    <div class="ml-reason-text">
+      <div class="ml-reason-eyebrow">The 3-Stage Enzyme System</div>
+      <h2>5. Maison Laundrin Was Built for the Problem No Other Detergent Solves</h2>
+      <p class="ml-reason-body">This isn't another detergent with a stronger scent sprayed on top. It's a fundamentally different approach &mdash; a three-stage system designed by perfumers and chemists specifically for the fabric challenges women face after 40.</p>
+      <ul class="ml-icon-list">
+        <li>
+          <div class="ml-icon">1</div>
+          <div><strong>Stage 1: STRIP</strong>A multi-enzyme system led by lipase goes <em>inside</em> the fiber to break down oil-based buildup that standard detergent slides over. Not across the surface &mdash; into it.</div>
+        </li>
+        <li>
+          <div class="ml-icon">2</div>
+          <div><strong>Stage 2: SHIELD</strong>A microscopic protective coating bonds to fibers, blocking residue from reattaching between washes. This is why freshness lasts all week instead of all afternoon.</div>
+        </li>
+        <li>
+          <div class="ml-icon">3</div>
+          <div><strong>Stage 3: REPLACE</strong>Micro-encapsulated fragrance &mdash; crafted by master perfumers &mdash; bonds into the fabric and releases with friction. Every movement, every brush of fabric on skin releases a whisper of scent. For 5-7 days.</div>
+        </li>
+        <li>
+          <div class="ml-icon">&#9733;</div>
+          <div><strong>4 Signature Scents</strong>Luxe Blanc (five-star hotel sheets), Belle Vie (the compliment magnet), Fleur Sombre (dark &amp; magnetic), Douceur Vanill&eacute;e (warm cashmere embrace). Each designed for a different mood.</div>
+        </li>
+        <li>
+          <div class="ml-icon">&#128176;</div>
+          <div><strong>$0.61 Per Load</strong>64 loads per bottle. Replace $125/month in candles, sprays, and dryer sheets with $60/month that actually works &mdash; on every fabric, in every room, all week.</div>
+        </li>
+      </ul>
+    </div>
+    <div class="ml-reason-img">
+      <!-- REPLACE: Product beauty shot or 3-stage diagram -->
+      <img src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/ml-reason-5-system.jpg" alt="Maison Laundrin 3-Stage Enzyme System illustration">
+    </div>
+  </div>
+
+  <!-- ========== REVIEWS ========== -->
+  <section class="ml-reviews">
+    <div class="ml-reviews-inner">
+      <div class="ml-reviews-header">
+        <h2>Women Are Talking About It</h2>
+        <p>From flat, lifeless laundry to compliments from strangers &mdash; in one wash cycle.</p>
+      </div>
+      <div class="ml-reviews-grid">
+
+        <div class="ml-review-card">
+          <div class="ml-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="ml-review-quote">"Three compliments in one week. I wasn't wearing a drop of perfume."</div>
+          <div class="ml-review-body">I washed my blouse in Belle Vie four days earlier. My neighbor asked. The woman at the bank asked. And my fourteen-year-old granddaughter stopped in the hallway and said, "Grandma, you smell really good." I got emotional. It's been a very long time since anyone said that to me.</div>
+          <div class="ml-review-author">
+            <div class="ml-review-avatar">K</div>
+            <div>
+              <span class="ml-review-name">Kathleen, 71</span>
+              <span class="ml-review-badge">Verified Buyer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ml-review-card">
+          <div class="ml-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="ml-review-quote">"I was a Tide woman for forty years. I'm never going back."</div>
+          <div class="ml-review-body">My sheets stopped smelling the way I wanted them to. I tried everything &mdash; dryer sheets, scent boosters, Febreze. Nothing lasted. My daughter gave me Maison Laundrin for my birthday. The first time I pulled my sheets from the dryer, I held the pillowcase to my face and understood. This works inside the fabric. Everything else works on the surface.</div>
+          <div class="ml-review-author">
+            <div class="ml-review-avatar">M</div>
+            <div>
+              <span class="ml-review-name">Margaret, 66</span>
+              <span class="ml-review-badge">Verified Buyer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ml-review-card">
+          <div class="ml-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="ml-review-quote">"My daughter walked in and said, 'Mom, your house smells like a spa.'"</div>
+          <div class="ml-review-body">Eleanor at bridge kept smelling like heaven on earth. I demanded she tell me what she was using. I thought it was perfume. When she said it was her laundry detergent, I ordered the Discovery Set that night. I've been waiting years to hear my daughter say those words about my home.</div>
+          <div class="ml-review-author">
+            <div class="ml-review-avatar">B</div>
+            <div>
+              <span class="ml-review-name">Barbara, 69</span>
+              <span class="ml-review-badge">Verified Buyer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ml-review-card">
+          <div class="ml-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="ml-review-quote">"I called my sister and said, 'Patricia, I found it. I finally found it.'"</div>
+          <div class="ml-review-body">I'm 73 and I had given up. Candles, plug-ins, those scent beads &mdash; nothing lasted. I tried Luxe Blanc on my sheets and the first morning I woke up and the pillowcase still smelled beautiful, I made the call. She thought I was talking about a man. I told her no &mdash; something better. Something reliable.</div>
+          <div class="ml-review-author">
+            <div class="ml-review-avatar">J</div>
+            <div>
+              <span class="ml-review-name">Judith, 73</span>
+              <span class="ml-review-badge">Verified Buyer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ml-review-card">
+          <div class="ml-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="ml-review-quote">"Lily pressed her face into the pillow and said, 'It smells like a cloud, Grandma.'"</div>
+          <div class="ml-review-body">I washed everything for Thanksgiving in Douceur Vanill&eacute;e. The guest room. The throw blankets. Every sheet. My seven-year-old granddaughter climbed into bed and said those words. I will carry that sentence with me for the rest of my life. That's what this product does &mdash; it creates moments.</div>
+          <div class="ml-review-author">
+            <div class="ml-review-avatar">E</div>
+            <div>
+              <span class="ml-review-name">Eleanor, 67</span>
+              <span class="ml-review-badge">Verified Buyer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ml-review-card">
+          <div class="ml-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="ml-review-quote">"I bought this for my mom. She called me crying &mdash; happy tears."</div>
+          <div class="ml-review-body">Mom has been complaining about her sheets smelling flat for years. I got her the Discovery Set for Mother's Day. She called me that evening and said it was the most beautiful thing she'd ever smelled come out of a washing machine. She's on her third bottle now. Best $49 I've ever spent.</div>
+          <div class="ml-review-author">
+            <div class="ml-review-avatar">C</div>
+            <div>
+              <span class="ml-review-name">Catherine, 41</span>
+              <span class="ml-review-badge">Verified Buyer</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TRUST BAR ========== -->
+  <div class="ml-trust-bar">
+    <div class="ml-trust-bar-inner">
+      <div class="ml-trust-item">Plant-Based Formula</div>
+      <div class="ml-trust-item">Dermatologist Tested</div>
+      <div class="ml-trust-item">Master Perfumer Crafted</div>
+      <div class="ml-trust-item">60-Day Guarantee</div>
+    </div>
+  </div>
+
+  <!-- ========== PRODUCT BUY BOX ========== -->
+  <section class="ml-buybox" id="shop-now">
+    <div class="ml-buybox-header">
+      <h2>The Only Detergent Built for How You Live Now</h2>
+      <p>Stop fighting fabric buildup with products designed for grass stains. Start with the scent system that was made for you.</p>
+    </div>
+    <div class="ml-buybox-content">
+      <div class="ml-buybox-images">
+        <!-- REPLACE: Product carousel/image -->
+        <img src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/ml-discovery-set-product.jpg" alt="Maison Laundrin Discovery Set - all four scents">
+      </div>
+      <div class="ml-buybox-details">
+        <div class="ml-buybox-title">The Discovery Set</div>
+        <div class="ml-buybox-price">$49 <span style="font-size:0.7em;font-weight:400;color:#999;text-decoration:line-through;">$79</span></div>
+        <div class="ml-buybox-rating">&#9733;&#9733;&#9733;&#9733;&#9733; 4.9/5 &nbsp;&middot;&nbsp; Loved by thousands</div>
+        <ul class="ml-buybox-benefits">
+          <li>All 4 signature scents &mdash; find your favorite or keep them all</li>
+          <li>3-stage enzyme system: Strip, Shield, Replace</li>
+          <li>Micro-encapsulated fragrance lasts 5-7 days per wash</li>
+          <li>Crafted by master perfumers (not a lab in New Jersey)</li>
+          <li>Plant-based, no phthalates, no SLS, no artificial dyes</li>
+          <li>Dermatologist tested &mdash; safe for sensitive, mature skin</li>
+          <li>Works in all machines: top-load, front-load, HE</li>
+          <li>Replaces candles, sprays, dryer sheets &amp; scent beads</li>
+          <li>Free shipping included</li>
+        </ul>
+        <a href="https://maisonlaundrin.com/products/discovery-set" class="ml-buybox-cta">Try the Discovery Set &mdash; $49</a>
+        <div class="ml-buybox-guarantee">60-Day Double-Scent Promise: Full refund if your fabrics don't hold scent longer than anything you've tried. Keep the bottles.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section class="ml-faq">
+    <div class="ml-faq-inner">
+      <h2>Questions? We Have Answers.</h2>
+
+      <div class="ml-faq-item">
+        <div class="ml-faq-q">Wait &mdash; this is really a laundry detergent?</div>
+        <div class="ml-faq-a">Yes, and it cleans beautifully. But it's also much more. Maison Laundrin is a three-stage fabric care system: it deep-cleans invisible buildup with a multi-enzyme system, shields fibers with a protective coating, and bonds micro-encapsulated fragrance into the fabric that lasts for days. Think of it as a luxury fragrance experience that happens to clean your laundry better than what you're using now.</div>
+      </div>
+
+      <div class="ml-faq-item">
+        <div class="ml-faq-q">Will it work in my washing machine?</div>
+        <div class="ml-faq-a">Absolutely. Maison Laundrin works in all washing machines &mdash; top-load, front-load, HE, standard. Same cycle you use now. You simply pour it in where you normally put detergent. Nothing changes about your process. Everything changes about the result.</div>
+      </div>
+
+      <div class="ml-faq-item">
+        <div class="ml-faq-q">I have sensitive skin. Is this safe for me?</div>
+        <div class="ml-faq-a">It was designed with sensitive skin in mind. Plant-based surfactants. No phthalates, no phosphates, no artificial dyes, no hormone disruptors. Dermatologist tested. The formula is gentler than most mainstream detergents &mdash; which matters as skin becomes more delicate over the years.</div>
+      </div>
+
+      <div class="ml-faq-item">
+        <div class="ml-faq-q">How long does the scent actually last?</div>
+        <div class="ml-faq-a">Most women report 5-7 days of noticeable fragrance. The scent is micro-encapsulated and bonded into the fiber, not sprayed on the surface. It releases with friction &mdash; when you move, when fabric touches skin, when sheets rustle in bed. Instead of fading in hours, it refreshes throughout the day, throughout the week.</div>
+      </div>
+
+      <div class="ml-faq-item">
+        <div class="ml-faq-q">What if I pick a scent I don't like?</div>
+        <div class="ml-faq-a">That's exactly why the Discovery Set exists. You receive all four scents in trial-size bottles. Try one on your sheets, another on your clothes, a third on your towels. Most women find their signature within the first two washes. Many end up keeping all four for different purposes &mdash; one for bedding, one for clothes, one for the guest room.</div>
+      </div>
+
+      <div class="ml-faq-item">
+        <div class="ml-faq-q">What scents are included?</div>
+        <div class="ml-faq-a"><strong>Luxe Blanc:</strong> Cotton flower, iris, white musk, powdered linen. Five-star hotel sheets. <strong>Belle Vie:</strong> Peach blossom, cr&egrave;me br&ucirc;l&eacute;e, luminous musk. The compliment magnet. <strong>Fleur Sombre:</strong> Smoked rose, blackcurrant, suede, amber. Dark and magnetic. <strong>Douceur Vanill&eacute;e:</strong> Warm vanilla orchid, almond milk, cashmere woods. Like a cashmere blanket made liquid.</div>
+      </div>
+
+      <div class="ml-faq-item">
+        <div class="ml-faq-q">What is the 60-Day Double-Scent Promise?</div>
+        <div class="ml-faq-a">Use Maison Laundrin for 60 days. Wash your sheets, your clothes, your towels. If your fabrics don't hold scent longer than anything you've ever tried &mdash; and if nobody compliments how you smell &mdash; we'll refund you in full. No return shipping. Keep the bottles. No hoops, no hassle.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== CLOSING CTA ========== -->
+  <section class="ml-closing-cta">
+    <h2>Your sheets should smell as beautiful on Friday as they did on Monday.</h2>
+    <p>Stop layering products that don't work. One wash. One system. Scent that lasts all week.</p>
+    <a href="https://maisonlaundrin.com/products/discovery-set" class="ml-closing-btn">Try the Discovery Set &mdash; $49 with Free Shipping</a>
+  </section>
+
+  <!-- ========== MOBILE STICKY CTA ========== -->
+  <div class="ml-mobile-cta" id="ml-mobile-cta">
+    <a href="https://maisonlaundrin.com/products/discovery-set">Try the Discovery Set &mdash; $49</a>
+  </div>
+
+  <!-- ========== FOOTER ========== -->
+  <div class="ml-footer">
+    &copy; 2026 Maison Laundrin &nbsp;&middot;&nbsp;
+    <a href="/policies/terms-of-service">Terms of Service</a> &nbsp;&middot;&nbsp;
+    <a href="/policies/privacy-policy">Privacy Policy</a>
+  </div>
+
+</div>
+
+<!-- ========== JAVASCRIPT ========== -->
+<script>
+(function() {
+  // Countdown timer (cosmetic urgency — resets on page load)
+  var total = 23 * 60 + 47;
+  var el = document.getElementById('ml-countdown');
+  if (el) {
+    setInterval(function() {
+      total--;
+      if (total <= 0) total = 20 * 60 + Math.floor(Math.random() * 300);
+      var m = Math.floor(total / 60);
+      var s = total % 60;
+      el.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+    }, 1000);
+  }
+
+  // FAQ accordion
+  var items = document.querySelectorAll('.ml-faq-item');
+  items.forEach(function(item) {
+    var q = item.querySelector('.ml-faq-q');
+    if (q) {
+      q.addEventListener('click', function() {
+        var wasOpen = item.classList.contains('open');
+        items.forEach(function(i) { i.classList.remove('open'); });
+        if (!wasOpen) item.classList.add('open');
+      });
+    }
+  });
+
+  // Mobile sticky CTA — show after scrolling past hero
+  var mobileCta = document.getElementById('ml-mobile-cta');
+  if (mobileCta && window.innerWidth <= 768) {
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 600) {
+        mobileCta.style.display = 'block';
+      } else {
+        mobileCta.style.display = 'none';
+      }
+    });
+  }
+})();
+</script>
