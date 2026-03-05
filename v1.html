@@ -3,26 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<title>5 Reasons Women Are Switching to Maison Laundrin</title>
+<title>5 Reasons Women Over 50 Are Switching to Maison Laundrin</title>
 <meta name="description" content="Discover the luxury laundry detergent with a 3-stage enzyme system that bonds fragrance into fabric for 5-7 days. Plant-based. Dermatologist tested.">
 <style>
 /*
-  MAISON LAUNDRIN — PRIMALS-STYLE LISTICLE v2 (RESTRUCTURED)
-  ===========================================================
-  CHANGES FROM v1:
-  - Restructured to maintain escalating tension through Reason 4
-  - Aspirational/emotional payoff moved to reviews + buy box
-  - Age-neutral language (no "Women Over 50" — signals without labeling)
-  - Mixed-age reviews (kept strongest 55-73, added 40s)
-  - New Reason 3: Perfume/scent won't stick (biological mechanism as emotional knife)
-  - New Reason 4: Financial futility ($125/mo on surface-level fixes)
-
+  MAISON LAUNDRIN — PRIMALS-STYLE LISTICLE TEMPLATE
+  ==================================================
   FORMAT: Paste inner content (from <style> to </script>) into Shopify Page (HTML mode).
   IMAGES: Replace placeholder src values with actual Shopify CDN URLs.
   LINKS: Replace #shop-now with actual product/collection URL.
+
+  For Shopify: remove the <!DOCTYPE>, <html>, <head>, <body> wrapper — just use <style> through </script>.
 */
 
-/* === HIDE SHOPIFY CHROME === */
+/* === HIDE SHOPIFY CHROME (only matters inside Shopify) === */
 .header-sticky-wrapper,
 #HeaderWrapper,
 .site-header,
@@ -453,30 +447,28 @@
   gap: 48px;
   max-width: 700px;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 
 .ml-trust-item {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   font-size: 0.78em;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #e8d5b7;
-  white-space: nowrap;
 }
 
 /* === PRODUCT BUY BOX === */
 .ml-buybox {
   padding: 72px 24px;
-  background: #fff;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 .ml-buybox-header {
   text-align: center;
   margin-bottom: 48px;
-  max-width: 640px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .ml-buybox-header h2 {
@@ -484,18 +476,17 @@
   font-weight: 700;
   color: #1a1a1a;
   margin-bottom: 12px;
-  line-height: 1.3;
 }
 
 .ml-buybox-header p {
   font-size: 1.05em;
   color: #666;
+  max-width: 560px;
+  margin: 0 auto;
   line-height: 1.65;
 }
 
 .ml-buybox-content {
-  max-width: 960px;
-  margin: 0 auto;
   display: flex;
   gap: 48px;
   align-items: flex-start;
@@ -525,10 +516,10 @@
 
 .ml-buybox-price {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-  font-size: 1.4em;
+  font-size: 1.3em;
   font-weight: 700;
   color: #1a1a1a;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .ml-buybox-rating {
@@ -541,15 +532,15 @@
 .ml-buybox-benefits {
   list-style: none;
   padding: 0;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .ml-buybox-benefits li {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-  font-size: 0.92em;
+  font-size: 0.95em;
   color: #333;
-  padding: 8px 0 8px 28px;
-  border-bottom: 1px solid #f0f0f0;
+  padding: 8px 0;
+  padding-left: 28px;
   position: relative;
   line-height: 1.5;
 }
@@ -724,7 +715,7 @@
   text-decoration: underline;
 }
 
-/* === MOBILE STICKY CTA === */
+/* === MOBILE STICKY CTA (appears on scroll) === */
 .ml-mobile-cta {
   display: none;
   position: fixed;
@@ -752,8 +743,12 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-/* === MOBILE RESPONSIVE === */
+/* ============================================
+   MOBILE RESPONSIVE — 768px and below
+   ============================================ */
 @media (max-width: 768px) {
+
+  /* --- Sticky bar: compact for mobile --- */
   .ml-sticky-bar {
     padding: 8px 12px;
     gap: 8px;
@@ -769,6 +764,7 @@
     font-size: 0.85em;
   }
 
+  /* --- Hero: tighter spacing, smaller type --- */
   .ml-hero {
     padding: 72px 16px 40px;
   }
@@ -803,6 +799,7 @@
     margin-top: 24px;
   }
 
+  /* --- Marquee: smaller on mobile --- */
   .ml-marquee-wrap {
     padding: 12px 0;
   }
@@ -812,6 +809,7 @@
     padding: 0 20px;
   }
 
+  /* --- Reason sections: stack vertically --- */
   .ml-reason {
     flex-direction: column !important;
     padding: 40px 16px;
@@ -850,6 +848,7 @@
     border-radius: 8px;
   }
 
+  /* --- Inline CTA --- */
   .ml-inline-cta {
     padding: 36px 16px;
   }
@@ -867,6 +866,7 @@
     margin-top: 8px;
   }
 
+  /* --- Reviews: single column --- */
   .ml-reviews {
     padding: 48px 16px;
   }
@@ -900,6 +900,7 @@
     font-size: 0.85em;
   }
 
+  /* --- Trust bar: 2x2 grid --- */
   .ml-trust-bar {
     padding: 24px 16px;
   }
@@ -916,6 +917,7 @@
     letter-spacing: 0.06em;
   }
 
+  /* --- Buy box: stack vertically --- */
   .ml-buybox {
     padding: 48px 16px;
   }
@@ -959,6 +961,7 @@
     font-size: 0.75em;
   }
 
+  /* --- FAQ: full-width touch targets --- */
   .ml-faq {
     padding: 48px 16px;
   }
@@ -979,6 +982,7 @@
     padding-bottom: 16px;
   }
 
+  /* --- Closing CTA --- */
   .ml-closing-cta {
     padding: 56px 16px;
   }
@@ -1000,16 +1004,20 @@
     margin: 0 auto;
   }
 
+  /* --- Mobile sticky CTA: show on scroll --- */
   .ml-mobile-cta.ml-visible {
     display: block;
   }
 
+  /* --- Footer: pad bottom for sticky CTA --- */
   .ml-footer {
     padding-bottom: 80px;
   }
 }
 
-/* === SMALL PHONES === */
+/* ============================================
+   SMALL PHONES — 375px and below
+   ============================================ */
 @media (max-width: 375px) {
   .ml-hero h1 {
     font-size: 1.4em;
@@ -1053,8 +1061,8 @@
   <!-- ========== HERO ========== -->
   <section class="ml-hero">
     <div class="ml-hero-inner">
-      <div class="ml-hero-eyebrow">Trusted by thousands who refuse to settle for flat-smelling laundry</div>
-      <h1>5 Reasons Women Are Switching to This Luxury Detergent (And Why Their Families Can't Stop Talking About It)</h1>
+      <div class="ml-hero-eyebrow">Trusted by thousands of women who refuse to settle</div>
+      <h1>5 Reasons Women Over 50 Are Switching to This Luxury Laundry Detergent</h1>
       <p class="ml-hero-sub">Your detergent was designed for grass stains and ketchup. Your life has moved on. Shouldn't your laundry?</p>
       <a href="#shop-now" class="ml-hero-cta">Discover Your Signature Scent</a>
       <p class="ml-hero-note">Free shipping on the Discovery Set &middot; 60-Day Guarantee</p>
@@ -1081,19 +1089,16 @@
     </div>
   </div>
 
-  <!-- ==========================================================
-       REASON 1: INVISIBLE BUILDUP (The Revelation)
-       Arc position: "You didn't know this was happening."
-       ========================================================== -->
+  <!-- ========== REASON 1: INVISIBLE BUILDUP (The Revelation) ========== -->
   <div class="ml-reason">
     <div class="ml-reason-text">
       <div class="ml-reason-eyebrow">The Hidden Problem</div>
       <h2>1. Your Fabrics Are Carrying Invisible Buildup That Your Detergent Can't Touch</h2>
-      <p class="ml-reason-body">Here's what nobody tells you: over time, your body's natural oils oxidize and bond deep inside fabric fibers &mdash; layer by invisible layer, wash after wash. Standard detergent was never engineered to reach it. It slides right over. That's why your sheets smell flat by midweek. That's why scent never sticks the way it used to.</p>
+      <p class="ml-reason-body">Here's what nobody tells you: after 40, your body chemistry changes. Natural oils oxidize and bond deep inside fabric fibers &mdash; layer by invisible layer, wash after wash. Standard detergent was never engineered to reach it. That's why your sheets smell flat by Wednesday. That's why scent never sticks.</p>
       <ul class="ml-icon-list">
         <li>
           <div class="ml-icon">&#128167;</div>
-          <div><strong>Oil-Based Residue</strong>Natural skin oils oxidize and embed into fabric over time. Water-based detergents slide right over them &mdash; like running water over a greasy pan.</div>
+          <div><strong>Oil-Based Residue</strong>As we age, natural skin oils oxidize and embed into fabric. Water-based detergents slide right over them &mdash; like running water over a greasy pan.</div>
         </li>
         <li>
           <div class="ml-icon">&#129533;</div>
@@ -1105,7 +1110,7 @@
         </li>
         <li>
           <div class="ml-icon">&#8986;</div>
-          <div><strong>The Wrong Tool for the Wrong Job</strong>Tide fights grass stains and ketchup. It was built for a different era of your life &mdash; soccer uniforms and sippy cup spills. Your needs have changed. Your detergent hasn't.</div>
+          <div><strong>30 Years of the Wrong Tool</strong>Tide fights grass stains and ketchup. It was built for the woman you were at 35 &mdash; chasing toddlers, scrubbing dirt. Your life has changed. Your detergent hasn't.</div>
         </li>
       </ul>
     </div>
@@ -1116,15 +1121,12 @@
   </div>
   <hr class="ml-reason-divider">
 
-  <!-- ==========================================================
-       REASON 2: TOXIC CHEMICALS (Escalation — "And it gets worse.")
-       Arc position: Problem deepens. Now it's not just ineffective, it's harmful.
-       ========================================================== -->
+  <!-- ========== REASON 2: TOXIC CHEMICALS (Deepens the Threat) ========== -->
   <div class="ml-reason">
     <div class="ml-reason-text">
       <div class="ml-reason-eyebrow">Read the Label</div>
       <h2>2. Your Detergent Is Pressing Harsh Chemicals Against Your Skin 12 Hours a Day</h2>
-      <p class="ml-reason-body">It gets worse. Not only can't your detergent reach the buildup &mdash; it's depositing its own problems. Optical brighteners. SLS. Phthalates. Synthetic dyes. Hormone disruptors. They sit in your fabric and press against your skin all day &mdash; your sheets while you sleep, your blouse at work, your pajamas at night.</p>
+      <p class="ml-reason-body">It gets worse. Not only can't your detergent reach the buildup &mdash; it's depositing its own problems. Optical brighteners. SLS. Phthalates. Synthetic dyes. Hormone disruptors. They sit in your fabric and press against your skin all day &mdash; your sheets while you sleep, your blouse at lunch, your pajamas at night.</p>
       <ul class="ml-icon-list">
         <li>
           <div class="ml-icon">&#9888;</div>
@@ -1136,7 +1138,7 @@
         </li>
         <li>
           <div class="ml-icon">&#9888;</div>
-          <div><strong>SLS &amp; Harsh Surfactants</strong>Strip natural moisture from fabric and skin. As skin becomes more delicate over the years, these chemicals matter more &mdash; not less. And they're in every load you run.</div>
+          <div><strong>SLS &amp; Harsh Surfactants</strong>Strip natural moisture from fabric and skin. As skin becomes more delicate with age, these chemicals matter more &mdash; not less. And they're in every load you run.</div>
         </li>
         <li>
           <div class="ml-icon">&#128137;</div>
@@ -1151,74 +1153,66 @@
   </div>
   <hr class="ml-reason-divider">
 
-  <!-- ==========================================================
-       REASON 3: SCENT WON'T STICK (The Emotional Knife — NEW)
-       Arc position: The twist. This is personal now.
-       This was a single line buried in v1 Reason 3. Now it's the whole section.
-       ========================================================== -->
+  <!-- ========== REASON 3: COMPLIMENTS & SCENT (The Emotional Cost) ========== -->
   <div class="ml-reason">
     <div class="ml-reason-text">
-      <div class="ml-reason-eyebrow">The Real Reason Scent Fades</div>
-      <h2>3. Your Body Chemistry Has Changed &mdash; And Nobody Told You</h2>
-      <p class="ml-reason-body">Remember when your perfume lasted all day? When people noticed you walked into the room? It's not that you stopped trying. It's that your skin changed. Over time, your body produces less of the natural oils that fragrance molecules bind to. Perfume evaporates faster. Lotions fade. And your detergent &mdash; which was never designed to carry scent in the first place &mdash; doesn't stand a chance. The result: everything smells like nothing. And you quietly stopped expecting compliments.</p>
+      <div class="ml-reason-eyebrow">What You've Been Missing</div>
+      <h2>3. Women Are Getting Compliments on Their "Perfume" &mdash; Without Wearing Any</h2>
+      <p class="ml-reason-body">Remember when people noticed you? When someone leaned in and said, "You smell wonderful"? The compliments didn't stop because you stopped trying. They stopped because perfume can't bind to aging skin the way it used to &mdash; and your detergent was never designed to pick up the slack. Until now.</p>
       <ul class="ml-icon-list">
         <li>
-          <div class="ml-icon">&#128167;</div>
-          <div><strong>Why Perfume Stopped Lasting</strong>Fragrance binds to sebum &mdash; the natural oil on your skin. As your body produces less of it over time, perfume has less to hold onto. It's not the perfume. It's the canvas.</div>
+          <div class="ml-icon">&#128139;</div>
+          <div><strong>"What Perfume Are You Wearing?"</strong>The most-reported moment: a stranger at church, a friend at bridge, a granddaughter in the hallway &mdash; all leaning in to ask. The answer is always the same: "It's my laundry detergent."</div>
         </li>
         <li>
-          <div class="ml-icon">&#128148;</div>
-          <div><strong>You're Fighting in the Wrong Category</strong>No amount of expensive perfume, body lotion, or fabric softener will fix this. They all rely on binding to your skin or sitting on the surface of fabric. Both are losing strategies when the chemistry has shifted.</div>
+          <div class="ml-icon">&#127800;</div>
+          <div><strong>Crafted by Master Perfumers</strong>These aren't lab-made "fresh linen" imitations. Each scent is a multi-layered composition &mdash; top notes, heart notes, base notes &mdash; designed by the same perfumers who create designer fragrances.</div>
         </li>
         <li>
-          <div class="ml-icon">&#128566;</div>
-          <div><strong>The Silence Is the Worst Part</strong>Nobody tells you why the compliments stopped. You just notice one day that it's been months &mdash; maybe years &mdash; since someone said, "You smell wonderful." And you wonder if it's you.</div>
+          <div class="ml-icon">&#128336;</div>
+          <div><strong>5-7 Days Per Wash</strong>Monday's laundry still carries scent on Friday. The micro-encapsulated fragrance releases with friction &mdash; movement, touch, the rustle of sheets in bed. It doesn't fade. It whispers.</div>
         </li>
         <li>
-          <div class="ml-icon">&#128161;</div>
-          <div><strong>The Answer Isn't on Your Skin</strong>If fragrance can't bind to your skin anymore, stop putting it there. Put it somewhere it <em>can</em> bind &mdash; your fabric. You wear 20+ square feet of it every day. That's the real canvas.</div>
+          <div class="ml-icon">&#127968;</div>
+          <div><strong>Your Entire Home Transforms</strong>When every fabric in your house carries the scent &mdash; sheets, towels, throw blankets, curtains &mdash; people walk through your front door and stop. "Your house smells incredible." No candles. No plug-ins. Just the laundry.</div>
         </li>
       </ul>
     </div>
     <div class="ml-reason-img">
-      <!-- REPLACE: Emotional image — woman at vanity, perfume bottles, contemplative mood -->
-      <img src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/ml-reason-3-scent-fades.jpg" alt="Woman looking at her collection of perfume bottles, contemplative expression">
+      <!-- REPLACE: Elegant woman receiving a compliment, social setting -->
+      <img src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/ml-reason-3-compliments.jpg" alt="Elegant woman smiling after receiving a compliment from a friend">
     </div>
   </div>
   <hr class="ml-reason-divider">
 
-  <!-- ==========================================================
-       REASON 4: FINANCIAL FUTILITY (The Frustration — NEW)
-       Arc position: "You've been throwing money at this for years."
-       Reader is now: aware, alarmed, emotionally hit, and frustrated.
-       ========================================================== -->
+  <!-- ========== REASON 4: SELF-CARE RITUAL (The Aspirational Bridge) ========== -->
   <div class="ml-reason">
     <div class="ml-reason-text">
-      <div class="ml-reason-eyebrow">Do the Math</div>
-      <h2>4. You're Spending $125 a Month on Products That Decorate the Surface of the Problem</h2>
-      <p class="ml-reason-body">Add it up. The candles that burn out in 40 hours. The plug-ins you replace every month. The dryer sheets that smell nice for one afternoon. The linen spray that fades before dinner. The scent beads, the Febreze, the fabric softener. You've built an entire ecosystem of band-aids &mdash; and none of them reach the buildup you learned about in Reason 1. They all sit on top. Every single one.</p>
+      <div class="ml-reason-eyebrow">You Deserve This</div>
+      <h2>4. Laundry Day Becomes the Tiny Luxury You Actually Look Forward To</h2>
+      <p class="ml-reason-body">You've spent decades making everything beautiful for everyone else. The table. The guest room. The holidays. Maison Laundrin turns the most mundane chore in your house into a five-minute ritual that's entirely, unapologetically yours.</p>
       <ul class="ml-icon-list">
         <li>
-          <div class="ml-icon">&#128181;</div>
-          <div><strong>The Hidden Cost of "Good Enough"</strong>Candles: $25/month. Plug-ins: $12. Dryer sheets: $8. Linen spray: $15. Scent beads: $10. Fabric softener: $7. That's $77-125/month on products that evaporate, burn out, or wash away &mdash; and never touch the real problem.</div>
+          <div class="ml-icon">&#10024;</div>
+          <div><strong>An Experience, Not a Chore</strong>Opening the bottle feels like uncapping a perfume. Pulling warm sheets from the dryer feels like unwrapping a gift you gave yourself.</div>
         </li>
         <li>
-          <div class="ml-icon">&#128260;</div>
-          <div><strong>The Replacement Cycle</strong>Every one of these products needs to be repurchased on a weekly or monthly basis. You're not buying a solution. You're renting a cover-up.</div>
+          <div class="ml-icon">&#128716;</div>
+          <div><strong>Your Bed Becomes a Sanctuary</strong>Climbing into sheets washed in Luxe Blanc is the moment women say they never knew laundry could give them. Clean, layered, achingly beautiful &mdash; every single night.</div>
         </li>
         <li>
-          <div class="ml-icon">&#127981;</div>
-          <div><strong>They Were Designed to Run Out</strong>There's a reason Glade and Febreze are billion-dollar brands. Their business model depends on your home smelling flat again by next week. They <em>need</em> you to keep buying.</div>
+          <div class="ml-icon">&#127799;</div>
+          <div><strong>4 Scents for 4 Moods</strong>One for your sheets. One for your clothes. One for the guest room. One for your pajamas. Each one a different kind of beautiful.</div>
         </li>
         <li>
-          <div class="ml-icon">&#129300;</div>
-          <div><strong>What If One Product Replaced All of Them?</strong>One pour. One wash cycle. Every fabric in your home &mdash; sheets, towels, clothes, throw blankets &mdash; carrying scent for days. No candles. No plug-ins. No refills. Just the laundry.</div>
+          <div class="ml-icon">&#128150;</div>
+          <div><strong>The Smallest Upgrade, the Biggest Impact</strong>You don't change your routine. Same machine, same cycle. You just pour in something better &mdash; and the entire feeling of your home shifts.</div>
         </li>
       </ul>
     </div>
     <div class="ml-reason-img">
-      <!-- REPLACE: Image showing cluttered collection of scent products vs single ML bottle -->
-      <img src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/ml-reason-4-products.jpg" alt="Cluttered shelf of candles, sprays, and dryer sheets next to a single elegant Maison Laundrin bottle">
+      <!-- REPLACE: Woman enjoying the ritual — smelling fresh laundry, peaceful moment -->
+      <img src="https://cdn.shopify.com/s/files/1/0715/2825/1631/files/ml-reason-4-ritual.jpg" alt="Woman holding freshly laundered sheets to her face, eyes closed, peaceful">
     </div>
   </div>
 
@@ -1228,21 +1222,16 @@
     <p>60-Day Double-Scent Promise &middot; Keep the bottles if you're not amazed</p>
   </div>
 
-  <!-- ==========================================================
-       REASON 5: THE 3-STAGE ENZYME SYSTEM (The Hero Arrives)
-       Arc position: Relief. Here's how all 4 problems get solved at once.
-       Reader is: aware, alarmed, emotionally devastated, financially frustrated.
-       NOW they're ready to hear the solution.
-       ========================================================== -->
+  <!-- ========== REASON 5: UNIQUE MECHANISM (The Payoff) ========== -->
   <div class="ml-reason">
     <div class="ml-reason-text">
       <div class="ml-reason-eyebrow">The 3-Stage Enzyme System</div>
       <h2>5. Why It Works When Nothing Else Has</h2>
-      <p class="ml-reason-body">This isn't another detergent with a stronger scent sprayed on top. It's a fundamentally different system &mdash; three stages, each solving one of the problems you just read about. Designed by chemists and master perfumers for the fabric challenges your current detergent was never built to handle.</p>
+      <p class="ml-reason-body">This isn't another detergent with a stronger scent sprayed on top. It's a fundamentally different system &mdash; three stages, each solving one of the problems you just read about. Designed by chemists and master perfumers for the fabric challenges women face after 40.</p>
       <ul class="ml-icon-list">
         <li>
           <div class="ml-icon">1</div>
-          <div><strong>Stage 1: STRIP</strong>A multi-enzyme system led by lipase goes <em>inside</em> the fiber to break down the oil-based buildup that standard detergent slides over. Not across the surface &mdash; into it. This is why your first wash feels like a reset.</div>
+          <div><strong>Stage 1: STRIP</strong>A multi-enzyme system led by lipase goes <em>inside</em> the fiber to break down oil-based buildup that standard detergent slides over. Not across the surface &mdash; into it. This is why your first wash feels like a reset.</div>
         </li>
         <li>
           <div class="ml-icon">2</div>
@@ -1250,15 +1239,15 @@
         </li>
         <li>
           <div class="ml-icon">3</div>
-          <div><strong>Stage 3: REPLACE</strong>Micro-encapsulated fragrance &mdash; crafted by master perfumers &mdash; bonds into the cleaned, shielded fabric and releases with friction. Every movement, every brush of fabric on skin, releases a whisper of scent. For 5-7 days.</div>
+          <div><strong>Stage 3: REPLACE</strong>Micro-encapsulated fragrance &mdash; crafted by master perfumers &mdash; bonds into the fabric and releases with friction. Every movement, every brush of fabric on skin, releases a whisper of scent. For 5-7 days.</div>
         </li>
         <li>
           <div class="ml-icon">&#9733;</div>
-          <div><strong>4 Signature Scents</strong>Luxe Blanc (five-star hotel sheets), Belle Vie (the compliment magnet), Fleur Sombre (dark &amp; magnetic), Douceur Vanill&eacute;e (warm cashmere embrace). Each one crafted by master perfumers &mdash; not a lab in New Jersey.</div>
+          <div><strong>4 Signature Scents</strong>Luxe Blanc (five-star hotel sheets), Belle Vie (the compliment magnet), Fleur Sombre (dark &amp; magnetic), Douceur Vanill&eacute;e (warm cashmere embrace). Each one a different kind of beautiful.</div>
         </li>
         <li>
           <div class="ml-icon">&#128176;</div>
-          <div><strong>$0.61 Per Load. Replaces Everything.</strong>One product. One pour. Candles, plug-ins, linen spray, dryer sheets, scent beads, fabric softener &mdash; gone. Every fabric. Every room. All week.</div>
+          <div><strong>Replaces $125/Month in Products That Don't Work</strong>Candles, plug-ins, linen spray, dryer sheets, scent beads &mdash; gone. One product. $0.61 per load. Every fabric, every room, all week.</div>
         </li>
       </ul>
     </div>
@@ -1268,28 +1257,23 @@
     </div>
   </div>
 
-  <!-- ==========================================================
-       REVIEWS — This is where aspiration and emotion live now.
-       The compliments, the ritual, the family moments — all proof
-       that the system from Reason 5 delivers on its promise.
-       Mixed ages: 44, 52, 67, 69, 71, 73 (signals range without labeling)
-       ========================================================== -->
+  <!-- ========== REVIEWS ========== -->
   <section class="ml-reviews">
     <div class="ml-reviews-inner">
       <div class="ml-reviews-header">
-        <h2>Then the Compliments Started</h2>
-        <p>From flat, lifeless laundry to strangers asking what perfume you're wearing &mdash; in one wash cycle.</p>
+        <h2>Women Are Talking About It</h2>
+        <p>From flat, lifeless laundry to compliments from strangers &mdash; in one wash cycle.</p>
       </div>
       <div class="ml-reviews-grid">
 
         <div class="ml-review-card">
           <div class="ml-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <div class="ml-review-quote">"Three compliments in one week. I wasn't wearing a drop of perfume."</div>
-          <div class="ml-review-body">I washed my blouse in Belle Vie four days earlier. My neighbor asked. The woman at the bank asked. And my granddaughter stopped in the hallway and said, "Grandma, you smell really good." It's been a very long time since anyone said that to me. I didn't realize how much I missed it until it happened.</div>
+          <div class="ml-review-body">I washed my blouse in Belle Vie four days earlier. My neighbor asked. The woman at the bank asked. And my fourteen-year-old granddaughter stopped in the hallway and said, "Grandma, you smell really good." I got emotional. It's been a very long time since anyone said that to me.</div>
           <div class="ml-review-author">
             <div class="ml-review-avatar">K</div>
             <div>
-              <span class="ml-review-name">Kathleen M.</span>
+              <span class="ml-review-name">Kathleen, 71</span>
               <span class="ml-review-badge">Verified Buyer</span>
             </div>
           </div>
@@ -1297,25 +1281,12 @@
 
         <div class="ml-review-card">
           <div class="ml-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <div class="ml-review-quote">"I noticed my sheets stopped smelling fresh a few years ago. I thought it was just life."</div>
-          <div class="ml-review-body">I tried every trick &mdash; extra rinse cycles, vinegar, scent boosters. Nothing lasted past Tuesday. A friend recommended Maison Laundrin and I figured why not. I washed my sheets on Sunday. By Thursday night they still smelled like a five-star hotel. I texted her at 11pm: "Where has this been my whole life?"</div>
-          <div class="ml-review-author">
-            <div class="ml-review-avatar">L</div>
-            <div>
-              <span class="ml-review-name">Lauren T.</span>
-              <span class="ml-review-badge">Verified Buyer</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="ml-review-card">
-          <div class="ml-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <div class="ml-review-quote">"I was a Tide woman for decades. I'm never going back."</div>
-          <div class="ml-review-body">My sheets stopped smelling the way I wanted them to. I tried everything &mdash; dryer sheets, scent boosters, Febreze. Nothing lasted. My daughter gave me this for my birthday. The first time I pulled my sheets from the dryer, I held the pillowcase to my face and understood. This works inside the fabric. Everything else works on the surface.</div>
+          <div class="ml-review-quote">"I was a Tide woman for forty years. I'm never going back."</div>
+          <div class="ml-review-body">My sheets stopped smelling the way I wanted them to. I tried everything &mdash; dryer sheets, scent boosters, Febreze. Nothing lasted. My daughter gave me Maison Laundrin for my birthday. The first time I pulled my sheets from the dryer, I held the pillowcase to my face and understood. This works inside the fabric. Everything else works on the surface.</div>
           <div class="ml-review-author">
             <div class="ml-review-avatar">M</div>
             <div>
-              <span class="ml-review-name">Margaret R.</span>
+              <span class="ml-review-name">Margaret, 66</span>
               <span class="ml-review-badge">Verified Buyer</span>
             </div>
           </div>
@@ -1323,12 +1294,25 @@
 
         <div class="ml-review-card">
           <div class="ml-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <div class="ml-review-quote">"My husband walked into the bedroom and said, 'What did you do? It smells incredible in here.'"</div>
-          <div class="ml-review-body">He doesn't notice anything. Twenty-two years of marriage and he's never once commented on a candle, a cleaning product, anything. But the first night I washed our sheets in Luxe Blanc, he stopped in the doorway. I didn't even have to tell him. He just stood there and breathed in. That's when I knew this was different.</div>
+          <div class="ml-review-quote">"My daughter walked in and said, 'Mom, your house smells like a spa.'"</div>
+          <div class="ml-review-body">Eleanor at bridge kept smelling like heaven on earth. I demanded she tell me what she was using. I thought it was perfume. When she said it was her laundry detergent, I ordered the Discovery Set that night. I've been waiting years to hear my daughter say those words about my home.</div>
           <div class="ml-review-author">
-            <div class="ml-review-avatar">S</div>
+            <div class="ml-review-avatar">B</div>
             <div>
-              <span class="ml-review-name">Sandra K.</span>
+              <span class="ml-review-name">Barbara, 69</span>
+              <span class="ml-review-badge">Verified Buyer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ml-review-card">
+          <div class="ml-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="ml-review-quote">"I called my sister and said, 'Patricia, I found it. I finally found it.'"</div>
+          <div class="ml-review-body">I'm 73 and I had given up. Candles, plug-ins, those scent beads &mdash; nothing lasted. I tried Luxe Blanc on my sheets and the first morning I woke up and the pillowcase still smelled beautiful, I made the call. She thought I was talking about a man. I told her no &mdash; something better. Something reliable.</div>
+          <div class="ml-review-author">
+            <div class="ml-review-avatar">J</div>
+            <div>
+              <span class="ml-review-name">Judith, 73</span>
               <span class="ml-review-badge">Verified Buyer</span>
             </div>
           </div>
@@ -1337,11 +1321,11 @@
         <div class="ml-review-card">
           <div class="ml-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <div class="ml-review-quote">"Lily pressed her face into the pillow and said, 'It smells like a cloud, Grandma.'"</div>
-          <div class="ml-review-body">I washed everything for Thanksgiving in Douceur Vanill&eacute;e. The guest room. The throw blankets. Every sheet. My seven-year-old granddaughter climbed into bed and said those words. I will carry that sentence with me for the rest of my life. That's what this product does &mdash; it creates moments you don't forget.</div>
+          <div class="ml-review-body">I washed everything for Thanksgiving in Douceur Vanill&eacute;e. The guest room. The throw blankets. Every sheet. My seven-year-old granddaughter climbed into bed and said those words. I will carry that sentence with me for the rest of my life. That's what this product does &mdash; it creates moments.</div>
           <div class="ml-review-author">
             <div class="ml-review-avatar">E</div>
             <div>
-              <span class="ml-review-name">Eleanor W.</span>
+              <span class="ml-review-name">Eleanor, 67</span>
               <span class="ml-review-badge">Verified Buyer</span>
             </div>
           </div>
@@ -1350,11 +1334,11 @@
         <div class="ml-review-card">
           <div class="ml-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <div class="ml-review-quote">"I bought this for my mom. She called me crying &mdash; happy tears."</div>
-          <div class="ml-review-body">Mom's been complaining about her sheets smelling flat for years. I got her the Discovery Set for Mother's Day. She called me that evening and said it was the most beautiful thing she'd ever smelled come out of a washing machine. She's on her third bottle now. Best $49 I've ever spent on a gift.</div>
+          <div class="ml-review-body">Mom has been complaining about her sheets smelling flat for years. I got her the Discovery Set for Mother's Day. She called me that evening and said it was the most beautiful thing she'd ever smelled come out of a washing machine. She's on her third bottle now. Best $49 I've ever spent.</div>
           <div class="ml-review-author">
             <div class="ml-review-avatar">C</div>
             <div>
-              <span class="ml-review-name">Catherine D.</span>
+              <span class="ml-review-name">Catherine, 41</span>
               <span class="ml-review-badge">Verified Buyer</span>
             </div>
           </div>
@@ -1378,7 +1362,7 @@
   <section class="ml-buybox" id="shop-now">
     <div class="ml-buybox-header">
       <h2>The Only Detergent Built for How You Live Now</h2>
-      <p>Stop fighting fabric buildup with products designed for grass stains. Start with the scent system built for the life you're actually living.</p>
+      <p>Stop fighting fabric buildup with products designed for grass stains. Start with the scent system that was made for you.</p>
     </div>
     <div class="ml-buybox-content">
       <div class="ml-buybox-images">
@@ -1387,15 +1371,15 @@
       </div>
       <div class="ml-buybox-details">
         <div class="ml-buybox-title">The Discovery Set</div>
-        <div class="ml-buybox-price">$49</div>
+        <div class="ml-buybox-price">$49 <span style="font-size:0.7em;font-weight:400;color:#999;text-decoration:line-through;">$79</span></div>
         <div class="ml-buybox-rating">&#9733;&#9733;&#9733;&#9733;&#9733; 4.9/5 &nbsp;&middot;&nbsp; Loved by thousands</div>
         <ul class="ml-buybox-benefits">
           <li>All 4 signature scents &mdash; find your favorite or keep them all</li>
           <li>3-stage enzyme system: Strip, Shield, Replace</li>
           <li>Micro-encapsulated fragrance lasts 5-7 days per wash</li>
           <li>Crafted by master perfumers (not a lab in New Jersey)</li>
-          <li>Plant-based &mdash; no phthalates, no SLS, no artificial dyes</li>
-          <li>Dermatologist tested &mdash; safe for sensitive skin</li>
+          <li>Plant-based, no phthalates, no SLS, no artificial dyes</li>
+          <li>Dermatologist tested &mdash; safe for sensitive, mature skin</li>
           <li>Works in all machines: top-load, front-load, HE</li>
           <li>Replaces candles, sprays, dryer sheets &amp; scent beads</li>
           <li>Free shipping included</li>
@@ -1423,17 +1407,17 @@
 
       <div class="ml-faq-item">
         <div class="ml-faq-q">I have sensitive skin. Is this safe for me?</div>
-        <div class="ml-faq-a">It was designed with sensitive skin in mind. Plant-based surfactants. No phthalates, no phosphates, no artificial dyes, no hormone disruptors. Dermatologist tested. The formula is gentler than most mainstream detergents &mdash; which matters more as skin becomes more delicate over the years.</div>
+        <div class="ml-faq-a">It was designed with sensitive skin in mind. Plant-based surfactants. No phthalates, no phosphates, no artificial dyes, no hormone disruptors. Dermatologist tested. The formula is gentler than most mainstream detergents &mdash; which matters as skin becomes more delicate over the years.</div>
       </div>
 
       <div class="ml-faq-item">
         <div class="ml-faq-q">How long does the scent actually last?</div>
-        <div class="ml-faq-a">Most people report 5-7 days of noticeable fragrance. The scent is micro-encapsulated and bonded into the fiber, not sprayed on the surface. It releases with friction &mdash; when you move, when fabric touches skin, when sheets rustle in bed. Instead of fading in hours, it refreshes throughout the day, throughout the week.</div>
+        <div class="ml-faq-a">Most women report 5-7 days of noticeable fragrance. The scent is micro-encapsulated and bonded into the fiber, not sprayed on the surface. It releases with friction &mdash; when you move, when fabric touches skin, when sheets rustle in bed. Instead of fading in hours, it refreshes throughout the day, throughout the week.</div>
       </div>
 
       <div class="ml-faq-item">
         <div class="ml-faq-q">What if I pick a scent I don't like?</div>
-        <div class="ml-faq-a">That's exactly why the Discovery Set exists. You receive all four scents in trial-size bottles. Try one on your sheets, another on your clothes, a third on your towels. Most people find their signature within the first two washes. Many end up keeping all four for different purposes &mdash; one for bedding, one for clothes, one for the guest room.</div>
+        <div class="ml-faq-a">That's exactly why the Discovery Set exists. You receive all four scents in trial-size bottles. Try one on your sheets, another on your clothes, a third on your towels. Most women find their signature within the first two washes. Many end up keeping all four for different purposes &mdash; one for bedding, one for clothes, one for the guest room.</div>
       </div>
 
       <div class="ml-faq-item">
@@ -1443,7 +1427,7 @@
 
       <div class="ml-faq-item">
         <div class="ml-faq-q">What is the 60-Day Double-Scent Promise?</div>
-        <div class="ml-faq-a">Use Maison Laundrin for 60 days. Wash your sheets, your clothes, your towels. If your fabrics don't hold scent longer than anything you've ever tried &mdash; we'll refund you in full. No return shipping. Keep the bottles. No hoops, no hassle.</div>
+        <div class="ml-faq-a">Use Maison Laundrin for 60 days. Wash your sheets, your clothes, your towels. If your fabrics don't hold scent longer than anything you've ever tried &mdash; and if nobody compliments how you smell &mdash; we'll refund you in full. No return shipping. Keep the bottles. No hoops, no hassle.</div>
       </div>
 
     </div>
