@@ -1,17 +1,22 @@
-<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>5 Reasons Women Over 50 Are Switching to Maison Laundrin</title>
+<meta name="description" content="Discover the luxury laundry detergent with a 3-stage enzyme system that bonds fragrance into fabric for 5-7 days. Plant-based. Dermatologist tested.">
+<style>
+/*
   MAISON LAUNDRIN — PRIMALS-STYLE LISTICLE TEMPLATE
   ==================================================
-  Visual, section-based conversion page with urgency elements,
-  alternating image/text blocks, benefit marquee, review cards,
-  product buy box, FAQ accordion, and sticky CTA.
-
-  FORMAT: Paste into Shopify Page (HTML mode) or host standalone.
+  FORMAT: Paste inner content (from <style> to </script>) into Shopify Page (HTML mode).
   IMAGES: Replace placeholder src values with actual Shopify CDN URLs.
   LINKS: Replace #shop-now with actual product/collection URL.
--->
 
-<style>
-/* === HIDE SHOPIFY CHROME === */
+  For Shopify: remove the <!DOCTYPE>, <html>, <head>, <body> wrapper — just use <style> through </script>.
+*/
+
+/* === HIDE SHOPIFY CHROME (only matters inside Shopify) === */
 .header-sticky-wrapper,
 #HeaderWrapper,
 .site-header,
@@ -43,10 +48,12 @@
   line-height: 1.7;
   background: #fff;
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
 .ml-listicle img {
   max-width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -150,6 +157,7 @@
   letter-spacing: 0.03em;
   transition: background 0.2s;
   margin-bottom: 12px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .ml-hero-cta:hover {
@@ -172,7 +180,7 @@
 /* === BENEFIT MARQUEE === */
 .ml-marquee-wrap {
   background: #1a1a1a;
-  padding: 16px 0;
+  padding: 14px 0;
   overflow: hidden;
   white-space: nowrap;
 }
@@ -312,6 +320,7 @@
   font-weight: 600;
   letter-spacing: 0.03em;
   transition: background 0.2s;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .ml-inline-cta a:hover {
@@ -409,6 +418,7 @@
   font-weight: 700;
   font-size: 0.85em;
   color: #999;
+  flex-shrink: 0;
 }
 
 .ml-review-name {
@@ -557,6 +567,7 @@
   text-align: center;
   transition: background 0.2s;
   margin-bottom: 12px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .ml-buybox-cta:hover {
@@ -591,7 +602,7 @@
 
 .ml-faq-item {
   border-bottom: 1px solid #ddd;
-  padding: 20px 0;
+  padding: 0;
 }
 
 .ml-faq-q {
@@ -604,6 +615,10 @@
   justify-content: space-between;
   align-items: center;
   gap: 16px;
+  padding: 20px 0;
+  min-height: 56px;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 .ml-faq-q::after {
@@ -612,6 +627,8 @@
   font-weight: 300;
   color: #999;
   flex-shrink: 0;
+  width: 28px;
+  text-align: center;
   transition: transform 0.2s;
 }
 
@@ -623,7 +640,7 @@
   font-size: 0.95em;
   color: #555;
   line-height: 1.75;
-  padding-top: 14px;
+  padding: 0 0 20px 0;
   display: none;
 }
 
@@ -672,6 +689,7 @@
   font-weight: 700;
   letter-spacing: 0.03em;
   transition: background 0.2s;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .ml-closing-btn:hover {
@@ -707,6 +725,7 @@
   z-index: 9998;
   background: #fff;
   padding: 12px 16px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
   box-shadow: 0 -2px 12px rgba(0,0,0,0.1);
   text-align: center;
 }
@@ -715,43 +734,153 @@
   display: block;
   background: #1a1a1a;
   color: #fff;
-  padding: 14px 24px;
+  padding: 16px 24px;
   border-radius: 6px;
   text-decoration: none;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   font-size: 1em;
   font-weight: 700;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* === RESPONSIVE === */
+/* ============================================
+   MOBILE RESPONSIVE — 768px and below
+   ============================================ */
 @media (max-width: 768px) {
+
+  /* --- Sticky bar: compact for mobile --- */
   .ml-sticky-bar {
-    font-size: 0.72em;
     padding: 8px 12px;
-    gap: 6px;
-    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.72em;
   }
 
+  .ml-sticky-bar .ml-stock-msg {
+    display: none;
+  }
+
+  .ml-sticky-btn {
+    padding: 8px 16px;
+    font-size: 0.85em;
+  }
+
+  /* --- Hero: tighter spacing, smaller type --- */
   .ml-hero {
-    padding: 80px 20px 48px;
+    padding: 72px 16px 40px;
+  }
+
+  .ml-hero-eyebrow {
+    font-size: 0.65em;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
   }
 
   .ml-hero h1 {
-    font-size: 1.75em;
+    font-size: 1.65em;
+    line-height: 1.25;
+    margin-bottom: 16px;
   }
 
   .ml-hero-sub {
-    font-size: 1em;
+    font-size: 0.95em;
+    margin-bottom: 24px;
+    line-height: 1.6;
   }
 
+  .ml-hero-cta {
+    padding: 16px 32px;
+    font-size: 0.95em;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .ml-hero-img {
+    max-width: 280px;
+    margin-top: 24px;
+  }
+
+  /* --- Marquee: smaller on mobile --- */
+  .ml-marquee-wrap {
+    padding: 12px 0;
+  }
+
+  .ml-marquee span {
+    font-size: 0.72em;
+    padding: 0 20px;
+  }
+
+  /* --- Reason sections: stack vertically --- */
   .ml-reason {
     flex-direction: column !important;
-    padding: 48px 20px;
-    gap: 28px;
+    padding: 40px 16px;
+    gap: 24px;
+  }
+
+  .ml-reason-eyebrow {
+    font-size: 0.65em;
   }
 
   .ml-reason h2 {
-    font-size: 1.45em;
+    font-size: 1.35em;
+    line-height: 1.3;
+  }
+
+  .ml-reason-body {
+    font-size: 0.95em;
+    margin-bottom: 20px;
+    line-height: 1.7;
+  }
+
+  .ml-icon-list li {
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: 0.88em;
+    line-height: 1.5;
+  }
+
+  .ml-icon-list li .ml-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.95em;
+  }
+
+  .ml-reason-img img {
+    border-radius: 8px;
+  }
+
+  /* --- Inline CTA --- */
+  .ml-inline-cta {
+    padding: 36px 16px;
+  }
+
+  .ml-inline-cta a {
+    padding: 16px 24px;
+    font-size: 0.92em;
+    display: block;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .ml-inline-cta p {
+    font-size: 0.75em;
+    margin-top: 8px;
+  }
+
+  /* --- Reviews: single column --- */
+  .ml-reviews {
+    padding: 48px 16px;
+  }
+
+  .ml-reviews-header {
+    margin-bottom: 32px;
+  }
+
+  .ml-reviews-header h2 {
+    font-size: 1.5em;
+  }
+
+  .ml-reviews-header p {
+    font-size: 0.92em;
   }
 
   .ml-reviews-grid {
@@ -759,24 +888,166 @@
     gap: 16px;
   }
 
-  .ml-buybox-content {
-    flex-direction: column;
-    gap: 28px;
+  .ml-review-card {
+    padding: 22px 18px;
+  }
+
+  .ml-review-quote {
+    font-size: 1em;
+  }
+
+  .ml-review-body {
+    font-size: 0.85em;
+  }
+
+  /* --- Trust bar: 2x2 grid --- */
+  .ml-trust-bar {
+    padding: 24px 16px;
   }
 
   .ml-trust-bar-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 20px;
+    text-align: center;
+  }
+
+  .ml-trust-item {
+    font-size: 0.68em;
+    letter-spacing: 0.06em;
+  }
+
+  /* --- Buy box: stack vertically --- */
+  .ml-buybox {
+    padding: 48px 16px;
+  }
+
+  .ml-buybox-header {
+    margin-bottom: 32px;
+  }
+
+  .ml-buybox-header h2 {
+    font-size: 1.5em;
+  }
+
+  .ml-buybox-header p {
+    font-size: 0.92em;
+  }
+
+  .ml-buybox-content {
+    flex-direction: column;
     gap: 24px;
   }
 
-  .ml-mobile-cta {
-    display: block;
+  .ml-buybox-title {
+    font-size: 1.3em;
+  }
+
+  .ml-buybox-price {
+    font-size: 1.2em;
+  }
+
+  .ml-buybox-benefits li {
+    font-size: 0.88em;
+    padding: 7px 0 7px 24px;
+  }
+
+  .ml-buybox-cta {
+    padding: 18px 24px;
+    font-size: 1em;
+  }
+
+  .ml-buybox-guarantee {
+    font-size: 0.75em;
+  }
+
+  /* --- FAQ: full-width touch targets --- */
+  .ml-faq {
+    padding: 48px 16px;
+  }
+
+  .ml-faq h2 {
+    font-size: 1.5em;
+    margin-bottom: 28px;
+  }
+
+  .ml-faq-q {
+    font-size: 0.95em;
+    min-height: 52px;
+    padding: 16px 0;
+  }
+
+  .ml-faq-a {
+    font-size: 0.88em;
+    padding-bottom: 16px;
+  }
+
+  /* --- Closing CTA --- */
+  .ml-closing-cta {
+    padding: 56px 16px;
   }
 
   .ml-closing-cta h2 {
-    font-size: 1.5em;
+    font-size: 1.4em;
+  }
+
+  .ml-closing-cta p {
+    font-size: 0.92em;
+    margin-bottom: 24px;
+  }
+
+  .ml-closing-btn {
+    padding: 16px 32px;
+    font-size: 0.95em;
+    display: block;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  /* --- Mobile sticky CTA: show on scroll --- */
+  .ml-mobile-cta.ml-visible {
+    display: block;
+  }
+
+  /* --- Footer: pad bottom for sticky CTA --- */
+  .ml-footer {
+    padding-bottom: 80px;
+  }
+}
+
+/* ============================================
+   SMALL PHONES — 375px and below
+   ============================================ */
+@media (max-width: 375px) {
+  .ml-hero h1 {
+    font-size: 1.4em;
+  }
+
+  .ml-reason h2 {
+    font-size: 1.2em;
+  }
+
+  .ml-icon-list li {
+    font-size: 0.82em;
+  }
+
+  .ml-icon-list li .ml-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 0.85em;
+  }
+
+  .ml-review-card {
+    padding: 18px 14px;
+  }
+
+  .ml-buybox-benefits li {
+    font-size: 0.82em;
   }
 }
 </style>
+</head>
+<body>
 
 <div class="ml-listicle">
 
@@ -1206,14 +1477,19 @@
 
   // Mobile sticky CTA — show after scrolling past hero
   var mobileCta = document.getElementById('ml-mobile-cta');
-  if (mobileCta && window.innerWidth <= 768) {
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 600) {
-        mobileCta.style.display = 'block';
-      } else {
-        mobileCta.style.display = 'none';
-      }
-    });
+  function checkMobileCta() {
+    if (!mobileCta) return;
+    if (window.innerWidth <= 768 && window.scrollY > 500) {
+      mobileCta.classList.add('ml-visible');
+    } else {
+      mobileCta.classList.remove('ml-visible');
+    }
   }
+  window.addEventListener('scroll', checkMobileCta, { passive: true });
+  window.addEventListener('resize', checkMobileCta, { passive: true });
+  checkMobileCta();
 })();
 </script>
+
+</body>
+</html>
