@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "primals-landing",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

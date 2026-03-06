@@ -1,0 +1,1153 @@
+{%- liquid
+  assign marquee_blocks = section.blocks | where: "type", "marquee_item"
+  assign reason_blocks = section.blocks | where: "type", "reason"
+  assign review_blocks = section.blocks | where: "type", "review"
+  assign faq_blocks = section.blocks | where: "type", "faq"
+  assign product_blocks = section.blocks | where: "type", "product_card"
+  assign s = section.settings
+  assign sid = section.id
+-%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  /* === HIDE SHOPIFY CHROME === */
+  .header-sticky-wrapper,
+  #HeaderWrapper,
+  .site-header,
+  .site-footer,
+  .shopify-section-footer,
+  .shopify-section-group-header-group,
+  .shopify-section-group-footer-group,
+  .section-header,
+  .page-content > .section-header,
+  #shopify-section-announcement-bar,
+  .announcement-bar,
+  .cart-drawer,
+  .toolbar,
+  #shopify-section-header,
+  #shopify-section-footer {
+    display: none !important;
+  }
+
+  /* === BASE === */
+  #pt-{{ sid }} * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  #pt-{{ sid }} {
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    color: #000;
+    line-height: 1.4;
+    background: #fafaf7;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    letter-spacing: 0.025em;
+  }
+
+  #pt-{{ sid }} img { max-width: 100%; height: auto; display: block; }
+  #pt-{{ sid }} a { text-decoration: none; color: inherit; }
+  #pt-{{ sid }} a.pt-btn { color: #fff; }
+
+  /* === BUTTONS === */
+  #pt-{{ sid }} .pt-btn {
+    display: inline-block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 14px 36px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    text-align: center;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    -webkit-tap-highlight-color: transparent;
+    background: #5FAF8C;
+    color: #fff;
+  }
+
+  #pt-{{ sid }} .pt-btn:hover { background: #4e9a7a; }
+  #pt-{{ sid }} .pt-btn-full { display: block; width: 100%; }
+
+  /* === STICKY BAR === */
+  #pt-sticky-{{ sid }} {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 9999;
+    background: #111;
+    color: #fff;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  #pt-sticky-{{ sid }} .pt-sticky-text { opacity: 0.85; }
+  #pt-sticky-{{ sid }} .pt-sticky-timer {
+    font-weight: 800;
+    color: #d4a76a;
+    font-variant-numeric: tabular-nums;
+    min-width: 52px;
+    text-align: center;
+  }
+
+  #pt-sticky-{{ sid }} .pt-btn {
+    padding: 6px 20px;
+    font-size: 0.75rem;
+  }
+
+  /* === HERO === */
+  #pt-{{ sid }} .pt-hero {
+    padding: 80px 24px 72px;
+    background: #fff;
+  }
+
+  #pt-{{ sid }} .pt-hero-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 56px;
+  }
+
+  #pt-{{ sid }} .pt-hero-img { flex: 1; min-width: 0; }
+  #pt-{{ sid }} .pt-hero-img img { width: 100%; max-width: 640px; }
+  #pt-{{ sid }} .pt-hero-content { flex: 1; min-width: 0; }
+
+  #pt-{{ sid }} .pt-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 14px;
+  }
+
+  #pt-{{ sid }} .pt-hero-content h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #000;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  #pt-{{ sid }} .pt-hero-body {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.65;
+    margin-bottom: 32px;
+  }
+
+  #pt-{{ sid }} .pt-hero .pt-btn { font-size: 0.9rem; padding: 16px 44px; }
+
+  /* === MARQUEE === */
+  #pt-{{ sid }} .pt-marquee-wrap {
+    background: #111;
+    padding: 16px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  #pt-{{ sid }} .pt-marquee {
+    display: inline-flex;
+    align-items: center;
+    animation: pt-marquee-{{ sid }} 25s linear infinite;
+  }
+
+  #pt-{{ sid }} .pt-marquee:hover { animation-play-state: paused; }
+
+  #pt-{{ sid }} .pt-marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 36px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    opacity: 0.8;
+  }
+
+  #pt-{{ sid }} .pt-marquee-icon { color: #d4a76a; font-size: 1rem; }
+
+  @keyframes pt-marquee-{{ sid }} {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* === REASON SECTIONS === */
+  #pt-{{ sid }} .pt-reason-section { padding: 72px 24px; }
+  #pt-{{ sid }} .pt-reason-section.pt-bg-body { background: #fafaf7; }
+  #pt-{{ sid }} .pt-reason-section.pt-bg-white { background: #fff; }
+
+  #pt-{{ sid }} .pt-reason {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 56px;
+  }
+
+  #pt-{{ sid }} .pt-reason.pt-img-right { flex-direction: row; }
+  #pt-{{ sid }} .pt-reason.pt-img-left { flex-direction: row-reverse; }
+  #pt-{{ sid }} .pt-reason-text { flex: 1; min-width: 0; }
+  #pt-{{ sid }} .pt-reason-img { flex: 1; min-width: 0; }
+  #pt-{{ sid }} .pt-reason-img img { width: 100%; max-width: 640px; }
+
+  #pt-{{ sid }} .pt-reason-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #d4a76a;
+    margin-bottom: 10px;
+  }
+
+  #pt-{{ sid }} .pt-reason-text h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #000;
+    margin-bottom: 16px;
+  }
+
+  #pt-{{ sid }} .pt-reason-body {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  /* === ICON LIST === */
+  #pt-{{ sid }} .pt-icon-list { list-style: none; }
+
+  #pt-{{ sid }} .pt-icon-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 18px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  #pt-{{ sid }} .pt-icon-circle {
+    flex-shrink: 0;
+    width: 32px; height: 32px;
+    background: #f3f2ee;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: #d4a76a;
+    font-weight: 700;
+  }
+
+  #pt-{{ sid }} .pt-icon-list li strong { display: block; font-weight: 700; color: #000; margin-bottom: 2px; }
+  #pt-{{ sid }} .pt-icon-list li span { color: #666; }
+
+  /* === SECTION HEADER === */
+  #pt-{{ sid }} .pt-section-header { text-align: center; margin-bottom: 48px; }
+
+  #pt-{{ sid }} .pt-section-header h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 12px;
+    line-height: 1.1;
+  }
+
+  #pt-{{ sid }} .pt-section-header p {
+    font-size: 1rem;
+    color: #666;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* === REVIEWS === */
+  #pt-{{ sid }} .pt-reviews { padding: 72px 24px; background: #fff; }
+  #pt-{{ sid }} .pt-reviews-inner { max-width: 1280px; margin: 0 auto; }
+
+  #pt-{{ sid }} .pt-reviews-carousel { position: relative; overflow: hidden; }
+  #pt-{{ sid }} .pt-reviews-track { display: flex; transition: transform 0.4s ease; }
+  #pt-{{ sid }} .pt-review-slide { flex: 0 0 33.3333%; padding: 0 12px; }
+
+  #pt-{{ sid }} .pt-review-card {
+    background: #fff;
+    padding: 28px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #e8e8e1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #pt-{{ sid }} .pt-review-stars { color: #d4a76a; font-size: 1rem; margin-bottom: 14px; letter-spacing: 2px; }
+  #pt-{{ sid }} .pt-review-quote { font-size: 1rem; font-weight: 700; color: #000; margin-bottom: 12px; line-height: 1.35; }
+  #pt-{{ sid }} .pt-review-text { font-size: 0.85rem; color: #666; line-height: 1.7; margin-bottom: 18px; flex: 1; }
+
+  #pt-{{ sid }} .pt-review-author { display: flex; align-items: center; gap: 12px; }
+
+  #pt-{{ sid }} .pt-review-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: #f3f2ee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #d4a76a;
+    flex-shrink: 0;
+  }
+
+  #pt-{{ sid }} .pt-review-name { font-size: 0.85rem; font-weight: 700; color: #000; }
+  #pt-{{ sid }} .pt-review-badge { font-size: 0.7rem; color: #999; font-weight: 500; display: block; }
+
+  /* Carousel arrows */
+  #pt-{{ sid }} .pt-carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px; height: 40px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid #e8e8e1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #000;
+    z-index: 10;
+    transition: background 0.2s, box-shadow 0.2s;
+  }
+
+  #pt-{{ sid }} .pt-carousel-arrow:hover { background: #fafaf7; box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+  #pt-{{ sid }} .pt-carousel-arrow.pt-prev { left: -8px; }
+  #pt-{{ sid }} .pt-carousel-arrow.pt-next { right: -8px; }
+
+  /* Mobile review scroll */
+  #pt-{{ sid }} .pt-reviews-mobile {
+    display: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 16px;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+  }
+
+  #pt-{{ sid }} .pt-reviews-mobile::-webkit-scrollbar { display: none; }
+  #pt-{{ sid }} .pt-reviews-mobile .pt-review-card-wrap { flex: 0 0 85vw; max-width: 400px; scroll-snap-align: start; }
+
+  /* === MOBILE STICKY CTA === */
+  #pt-mobile-{{ sid }} {
+    display: none;
+    position: fixed;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(92%, 540px);
+    z-index: 9999;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    border-radius: 12px;
+  }
+
+  #pt-mobile-{{ sid }}.pt-visible { opacity: 1; visibility: visible; }
+
+  #pt-{{ sid }} .pt-mobile-urgency {
+    background: #5a1010;
+    color: #fff;
+    text-align: center;
+    padding: 8px 16px;
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  #pt-mobile-{{ sid }} .pt-btn {
+    display: block;
+    width: 100%;
+    padding: 15px 24px;
+    font-size: 0.9rem;
+    border-radius: 0 0 12px 12px;
+  }
+
+  /* === BUY BOX === */
+  #pt-{{ sid }} .pt-buybox { padding: 72px 24px; background: #fafaf7; }
+  #pt-{{ sid }} .pt-buybox-inner { max-width: 1280px; margin: 0 auto; }
+
+  #pt-{{ sid }} .pt-buybox-content {
+    display: flex;
+    gap: 56px;
+    align-items: flex-start;
+  }
+
+  #pt-{{ sid }} .pt-buybox-gallery { flex: 1; min-width: 0; }
+  #pt-{{ sid }} .pt-buybox-main-img { width: 100%; margin-bottom: 12px; }
+
+  #pt-{{ sid }} .pt-buybox-thumbs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  #pt-{{ sid }} .pt-buybox-thumbs::-webkit-scrollbar { display: none; }
+
+  #pt-{{ sid }} .pt-buybox-thumb {
+    flex: 0 0 72px;
+    width: 72px; height: 72px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    opacity: 0.5;
+    transition: opacity 0.2s, border-color 0.2s;
+  }
+
+  #pt-{{ sid }} .pt-buybox-thumb.pt-active,
+  #pt-{{ sid }} .pt-buybox-thumb:hover { opacity: 1; border-color: #111; }
+
+  #pt-{{ sid }} .pt-buybox-details { flex: 1; min-width: 0; }
+
+  #pt-{{ sid }} .pt-buybox-details h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 8px;
+    line-height: 1.15;
+  }
+
+  #pt-{{ sid }} .pt-buybox-rating { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; font-size: 0.85rem; }
+  #pt-{{ sid }} .pt-buybox-rating .pt-stars { color: #d4a76a; letter-spacing: 2px; }
+  #pt-{{ sid }} .pt-buybox-rating span { color: #666; font-weight: 500; }
+
+  #pt-{{ sid }} .pt-buybox-price { font-size: 1.5rem; font-weight: 800; color: #000; margin-bottom: 16px; }
+  #pt-{{ sid }} .pt-buybox-price .pt-compare { text-decoration: line-through; color: #999; font-size: 1rem; margin-left: 8px; font-weight: 400; }
+
+  #pt-{{ sid }} .pt-buybox-desc { font-size: 0.95rem; color: #666; line-height: 1.65; margin-bottom: 24px; }
+
+  #pt-{{ sid }} .pt-buybox-benefits { list-style: none; margin-bottom: 28px; }
+
+  #pt-{{ sid }} .pt-buybox-benefits li {
+    font-size: 0.9rem;
+    color: #000;
+    padding: 10px 0 10px 24px;
+    border-bottom: 1px solid #e8e8e1;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  #pt-{{ sid }} .pt-buybox-benefits li::before { content: "\2713"; position: absolute; left: 0; color: #d4a76a; font-weight: 700; }
+  #pt-{{ sid }} .pt-buybox-benefits li:last-child { border-bottom: none; }
+
+  #pt-{{ sid }} .pt-buybox .pt-btn { font-size: 0.95rem; padding: 16px 40px; margin-bottom: 12px; }
+  #pt-{{ sid }} .pt-buybox-guarantee { font-size: 0.78rem; color: #999; text-align: center; }
+
+  /* === FAQ === */
+  #pt-{{ sid }} .pt-faq { padding: 72px 24px; background: #fff; }
+  #pt-{{ sid }} .pt-faq-inner { max-width: 760px; margin: 0 auto; }
+  #pt-{{ sid }} .pt-faq-item { border-bottom: 1px solid #e8e8e1; }
+
+  #pt-{{ sid }} .pt-faq-q {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 0;
+    min-height: 56px;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  #pt-{{ sid }} .pt-faq-q::after { content: "+"; font-size: 1.3rem; font-weight: 300; color: #999; flex-shrink: 0; width: 28px; text-align: center; }
+  #pt-{{ sid }} .pt-faq-item.pt-open .pt-faq-q::after { content: "\2212"; }
+  #pt-{{ sid }} .pt-faq-a { font-size: 0.9rem; color: #666; line-height: 1.75; padding: 0 0 20px; display: none; }
+  #pt-{{ sid }} .pt-faq-item.pt-open .pt-faq-a { display: block; }
+
+  /* === PRODUCT GRID === */
+  #pt-{{ sid }} .pt-products { padding: 72px 24px; background: #fafaf7; }
+  #pt-{{ sid }} .pt-products-inner { max-width: 1280px; margin: 0 auto; }
+  #pt-{{ sid }} .pt-products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+  #pt-{{ sid }} .pt-product-card {
+    background: #fff;
+    overflow: hidden;
+    border: 1px solid #e8e8e1;
+    transition: box-shadow 0.2s;
+  }
+
+  #pt-{{ sid }} .pt-product-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
+  #pt-{{ sid }} .pt-product-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+  #pt-{{ sid }} .pt-product-card-body { padding: 20px; }
+
+  #pt-{{ sid }} .pt-product-card h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 8px;
+  }
+
+  #pt-{{ sid }} .pt-product-card p { font-size: 0.85rem; color: #666; line-height: 1.6; margin-bottom: 16px; }
+  #pt-{{ sid }} .pt-product-card .pt-btn { font-size: 0.8rem; padding: 10px 24px; }
+
+  /* === CLOSING CTA === */
+  #pt-{{ sid }} .pt-closing-cta { padding: 72px 24px; text-align: center; background: #111; color: #fff; }
+
+  #pt-{{ sid }} .pt-closing-cta h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 16px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.1;
+  }
+
+  #pt-{{ sid }} .pt-closing-cta p { font-size: 1rem; color: rgba(255,255,255,0.7); margin-bottom: 32px; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+
+  /* === FOOTER === */
+  #pt-{{ sid }} .pt-footer {
+    background: #111;
+    color: rgba(255,255,255,0.5);
+    padding: 24px;
+    text-align: center;
+    font-size: 0.78rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  #pt-{{ sid }} .pt-footer a { color: rgba(255,255,255,0.5); margin: 0 8px; transition: color 0.2s; }
+  #pt-{{ sid }} .pt-footer a:hover { color: #fff; }
+  #pt-{{ sid }} .pt-footer-copy { font-weight: 700; margin-bottom: 6px; color: rgba(255,255,255,0.7); }
+
+  /* === MOBILE === */
+  @media (max-width: 768px) {
+    #pt-sticky-{{ sid }} { padding: 8px 12px; gap: 10px; font-size: 0.75rem; }
+    #pt-sticky-{{ sid }} .pt-btn { padding: 6px 14px; font-size: 0.7rem; }
+
+    #pt-{{ sid }} .pt-hero { padding: 68px 16px 40px; }
+    #pt-{{ sid }} .pt-hero-inner { flex-direction: column; gap: 24px; }
+    #pt-{{ sid }} .pt-hero-content h2 { font-size: 1.6rem; }
+    #pt-{{ sid }} .pt-hero-body { font-size: 0.92rem; }
+    #pt-{{ sid }} .pt-hero .pt-btn { display: block; width: 100%; text-align: center; }
+
+    #pt-{{ sid }} .pt-marquee-wrap { padding: 12px 0; }
+    #pt-{{ sid }} .pt-marquee-item { font-size: 0.72rem; padding: 0 20px; }
+
+    #pt-{{ sid }} .pt-reason-section { padding: 40px 16px; }
+    #pt-{{ sid }} .pt-reason { flex-direction: column !important; gap: 24px; }
+    #pt-{{ sid }} .pt-reason-text h3 { font-size: 1.3rem; }
+    #pt-{{ sid }} .pt-reason-body { font-size: 0.88rem; }
+    #pt-{{ sid }} .pt-icon-list li { font-size: 0.85rem; gap: 12px; }
+    #pt-{{ sid }} .pt-icon-circle { width: 28px; height: 28px; font-size: 0.8rem; }
+
+    #pt-{{ sid }} .pt-section-header h2 { font-size: 1.5rem; }
+    #pt-{{ sid }} .pt-section-header p { font-size: 0.9rem; }
+
+    #pt-{{ sid }} .pt-reviews { padding: 48px 16px; }
+    #pt-{{ sid }} .pt-reviews-carousel { display: none; }
+    #pt-{{ sid }} .pt-reviews-mobile { display: flex; }
+
+    #pt-mobile-{{ sid }} { display: block; }
+
+    #pt-{{ sid }} .pt-buybox { padding: 40px 16px; }
+    #pt-{{ sid }} .pt-buybox-content { flex-direction: column; gap: 24px; }
+    #pt-{{ sid }} .pt-buybox-details h2 { font-size: 1.4rem; }
+    #pt-{{ sid }} .pt-buybox-price { font-size: 1.25rem; }
+    #pt-{{ sid }} .pt-buybox .pt-btn { padding: 16px 24px; font-size: 0.9rem; }
+
+    #pt-{{ sid }} .pt-faq { padding: 40px 16px; }
+    #pt-{{ sid }} .pt-faq-q { font-size: 0.92rem; padding: 16px 0; }
+    #pt-{{ sid }} .pt-faq-a { font-size: 0.85rem; }
+
+    #pt-{{ sid }} .pt-products { padding: 40px 16px; }
+    #pt-{{ sid }} .pt-products-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    #pt-{{ sid }} .pt-product-card h3 { font-size: 0.9rem; }
+    #pt-{{ sid }} .pt-product-card p { font-size: 0.78rem; }
+    #pt-{{ sid }} .pt-product-card .pt-btn { font-size: 0.78rem; padding: 8px 16px; display: block; width: 100%; text-align: center; }
+
+    #pt-{{ sid }} .pt-closing-cta { padding: 56px 16px; }
+    #pt-{{ sid }} .pt-closing-cta h2 { font-size: 1.4rem; }
+    #pt-{{ sid }} .pt-closing-cta p { font-size: 0.9rem; margin-bottom: 24px; }
+
+    #pt-{{ sid }} .pt-footer { padding-bottom: 90px; }
+  }
+
+  @media (max-width: 375px) {
+    #pt-{{ sid }} .pt-hero-content h2 { font-size: 1.35rem; }
+    #pt-{{ sid }} .pt-reason-text h3 { font-size: 1.15rem; }
+    #pt-{{ sid }} .pt-section-header h2 { font-size: 1.3rem; }
+    #pt-{{ sid }} .pt-buybox-details h2 { font-size: 1.25rem; }
+    #pt-{{ sid }} .pt-review-card { padding: 22px 18px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #pt-{{ sid }} .pt-marquee { animation: none; }
+  }
+</style>
+
+<div id="pt-{{ sid }}">
+
+  {%- comment -%} ========== STICKY BAR ========== {%- endcomment -%}
+  {%- if s.show_sticky_bar -%}
+    <div id="pt-sticky-{{ sid }}" data-minutes="{{ s.sticky_bar_timer_minutes }}" data-seconds="{{ s.sticky_bar_timer_seconds }}">
+      <span class="pt-sticky-text">{{ s.sticky_bar_text }}</span>
+      <span class="pt-sticky-timer" id="pt-timer-{{ sid }}">{{ s.sticky_bar_timer_minutes }}:{{ s.sticky_bar_timer_seconds | prepend: '0' | slice: -2, 2 }}</span>
+      <a href="{{ s.sticky_bar_cta_link }}" class="pt-btn">{{ s.sticky_bar_cta_text }}</a>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} ========== HERO ========== {%- endcomment -%}
+  <section class="pt-hero">
+    <div class="pt-hero-inner">
+      <div class="pt-hero-img">
+        {%- if s.hero_image != blank -%}
+          <img
+            src="{{ s.hero_image | image_url: width: 640 }}"
+            srcset="{{ s.hero_image | image_url: width: 320 }} 320w, {{ s.hero_image | image_url: width: 640 }} 640w, {{ s.hero_image | image_url: width: 960 }} 960w"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            alt="{{ s.hero_image.alt | escape }}"
+            width="{{ s.hero_image.width }}"
+            height="{{ s.hero_image.height }}"
+            loading="eager"
+          >
+        {%- else -%}
+          <div style="background:#f3f2ee;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:#999;font-size:1.2rem;">Hero Image</div>
+        {%- endif -%}
+      </div>
+      <div class="pt-hero-content">
+        {%- if s.hero_eyebrow != blank -%}
+          <div class="pt-eyebrow">{{ s.hero_eyebrow }}</div>
+        {%- endif -%}
+        <h2>{{ s.hero_headline }}</h2>
+        {%- if s.hero_body != blank -%}
+          <p class="pt-hero-body">{{ s.hero_body }}</p>
+        {%- endif -%}
+        <a href="{{ s.hero_cta_link }}" class="pt-btn">{{ s.hero_cta_text }}</a>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ========== MARQUEE ========== {%- endcomment -%}
+  {%- if marquee_blocks.size > 0 -%}
+    <div class="pt-marquee-wrap">
+      <div class="pt-marquee" id="pt-marquee-{{ sid }}">
+        {%- for block in marquee_blocks -%}
+          <div class="pt-marquee-item" {{ block.shopify_attributes }}>
+            <span class="pt-marquee-icon">&#10003;</span> {{ block.settings.text }}
+          </div>
+        {%- endfor -%}
+        {%- for block in marquee_blocks -%}
+          <div class="pt-marquee-item">
+            <span class="pt-marquee-icon">&#10003;</span> {{ block.settings.text }}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} ========== REASON SECTIONS ========== {%- endcomment -%}
+  {%- for block in reason_blocks -%}
+    {%- assign is_odd = forloop.index | modulo: 2 -%}
+    <div class="pt-reason-section {% if is_odd == 1 %}pt-bg-body{% else %}pt-bg-white{% endif %}" {{ block.shopify_attributes }}>
+      <div class="pt-reason {% if is_odd == 1 %}pt-img-right{% else %}pt-img-left{% endif %}">
+        <div class="pt-reason-text">
+          {%- if block.settings.eyebrow != blank -%}
+            <div class="pt-reason-eyebrow">{{ block.settings.eyebrow }}</div>
+          {%- endif -%}
+          <h3>{{ block.settings.headline }}</h3>
+          {%- if block.settings.body != blank -%}
+            <p class="pt-reason-body">{{ block.settings.body }}</p>
+          {%- endif -%}
+          {%- if block.settings.bullet_1_label != blank or block.settings.bullet_2_label != blank or block.settings.bullet_3_label != blank -%}
+            <ul class="pt-icon-list">
+              {%- if block.settings.bullet_1_label != blank -%}
+                <li>
+                  <div class="pt-icon-circle">&#10003;</div>
+                  <div><strong>{{ block.settings.bullet_1_label }}</strong><span> {{ block.settings.bullet_1_text }}</span></div>
+                </li>
+              {%- endif -%}
+              {%- if block.settings.bullet_2_label != blank -%}
+                <li>
+                  <div class="pt-icon-circle">&#10003;</div>
+                  <div><strong>{{ block.settings.bullet_2_label }}</strong><span> {{ block.settings.bullet_2_text }}</span></div>
+                </li>
+              {%- endif -%}
+              {%- if block.settings.bullet_3_label != blank -%}
+                <li>
+                  <div class="pt-icon-circle">&#10003;</div>
+                  <div><strong>{{ block.settings.bullet_3_label }}</strong><span> {{ block.settings.bullet_3_text }}</span></div>
+                </li>
+              {%- endif -%}
+            </ul>
+          {%- endif -%}
+        </div>
+        <div class="pt-reason-img">
+          {%- if block.settings.image != blank -%}
+            <img
+              src="{{ block.settings.image | image_url: width: 640 }}"
+              srcset="{{ block.settings.image | image_url: width: 320 }} 320w, {{ block.settings.image | image_url: width: 640 }} 640w, {{ block.settings.image | image_url: width: 960 }} 960w"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              alt="{{ block.settings.image.alt | escape }}"
+              loading="lazy"
+              width="{{ block.settings.image.width }}"
+              height="{{ block.settings.image.height }}"
+            >
+          {%- else -%}
+            <div style="background:#f3f2ee;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:#999;">Reason {{ forloop.index }} Image</div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {%- endfor -%}
+
+  {%- comment -%} ========== REVIEWS ========== {%- endcomment -%}
+  {%- if review_blocks.size > 0 -%}
+    <section class="pt-reviews">
+      <div class="pt-reviews-inner">
+        <div class="pt-section-header">
+          <h2>{{ s.reviews_headline }}</h2>
+          {%- if s.reviews_subtext != blank -%}
+            <p>{{ s.reviews_subtext }}</p>
+          {%- endif -%}
+        </div>
+
+        <!-- Desktop carousel -->
+        <div class="pt-reviews-carousel" id="pt-rev-carousel-{{ sid }}">
+          <div class="pt-reviews-track" id="pt-rev-track-{{ sid }}">
+            {%- for block in review_blocks -%}
+              <div class="pt-review-slide" {{ block.shopify_attributes }}>
+                <div class="pt-review-card">
+                  <div class="pt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  <div class="pt-review-quote">"{{ block.settings.quote }}"</div>
+                  <div class="pt-review-text">{{ block.settings.text }}</div>
+                  <div class="pt-review-author">
+                    <div class="pt-review-avatar">{{ block.settings.initials }}</div>
+                    <div>
+                      <div class="pt-review-name">{{ block.settings.name }}</div>
+                      <span class="pt-review-badge">Verified Buyer</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+          {%- if review_blocks.size > 3 -%}
+            <button class="pt-carousel-arrow pt-prev" id="pt-rev-prev-{{ sid }}" aria-label="Previous reviews">&#8249;</button>
+            <button class="pt-carousel-arrow pt-next" id="pt-rev-next-{{ sid }}" aria-label="Next reviews">&#8250;</button>
+          {%- endif -%}
+        </div>
+
+        <!-- Mobile scroll -->
+        <div class="pt-reviews-mobile" id="pt-rev-mobile-{{ sid }}">
+          {%- for block in review_blocks -%}
+            <div class="pt-review-card-wrap">
+              <div class="pt-review-card">
+                <div class="pt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="pt-review-quote">"{{ block.settings.quote }}"</div>
+                <div class="pt-review-text">{{ block.settings.text }}</div>
+                <div class="pt-review-author">
+                  <div class="pt-review-avatar">{{ block.settings.initials }}</div>
+                  <div>
+                    <div class="pt-review-name">{{ block.settings.name }}</div>
+                    <span class="pt-review-badge">Verified Buyer</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} ========== BUY BOX ========== {%- endcomment -%}
+  {%- assign bp = s.buybox_product -%}
+  <section class="pt-buybox" id="pt-buybox-{{ sid }}">
+    <div class="pt-buybox-inner">
+      <div class="pt-section-header">
+        {%- if s.buybox_eyebrow != blank -%}
+          <div class="pt-eyebrow">{{ s.buybox_eyebrow }}</div>
+        {%- endif -%}
+        <h2>{{ s.buybox_headline }}</h2>
+      </div>
+      <div class="pt-buybox-content">
+        <div class="pt-buybox-gallery">
+          {%- if bp != blank and bp.featured_image != blank -%}
+            <img class="pt-buybox-main-img" id="pt-bb-main-{{ sid }}" src="{{ bp.featured_image | image_url: width: 640 }}" alt="{{ bp.featured_image.alt | escape }}" loading="lazy">
+            {%- if bp.images.size > 1 -%}
+              <div class="pt-buybox-thumbs">
+                {%- for image in bp.images -%}
+                  <img class="pt-buybox-thumb{% if forloop.first %} pt-active{% endif %}" src="{{ image | image_url: width: 72 }}" data-full="{{ image | image_url: width: 640 }}" alt="{{ image.alt | escape }}" loading="lazy">
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+          {%- else -%}
+            <div style="background:#f3f2ee;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:#999;font-size:1.2rem;">Product Image</div>
+          {%- endif -%}
+        </div>
+        <div class="pt-buybox-details">
+          <div class="pt-buybox-rating">
+            <span class="pt-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span>{{ s.buybox_rating_text }}</span>
+          </div>
+          {%- if bp != blank -%}
+            <h2>{{ bp.title }}</h2>
+            <div class="pt-buybox-price">
+              {{ bp.price | money }}
+              {%- if bp.compare_at_price > bp.price -%}
+                <span class="pt-compare">{{ bp.compare_at_price | money }}</span>
+              {%- endif -%}
+            </div>
+          {%- else -%}
+            <h2>{{ s.buybox_headline }}</h2>
+          {%- endif -%}
+          {%- if s.buybox_description != blank -%}
+            <p class="pt-buybox-desc">{{ s.buybox_description }}</p>
+          {%- endif -%}
+          <ul class="pt-buybox-benefits">
+            {%- for i in (1..6) -%}
+              {%- capture benefit_key -%}buybox_benefit_{{ i }}{%- endcapture -%}
+              {%- assign benefit_val = s[benefit_key] -%}
+              {%- if benefit_val != blank -%}
+                <li>{{ benefit_val }}</li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+          <a href="{{ s.buybox_cta_link | default: '#' }}" class="pt-btn pt-btn-full">{{ s.buybox_cta_text }}</a>
+          {%- if s.buybox_guarantee != blank -%}
+            <p class="pt-buybox-guarantee">{{ s.buybox_guarantee }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ========== FAQ ========== {%- endcomment -%}
+  {%- if faq_blocks.size > 0 -%}
+    <section class="pt-faq">
+      <div class="pt-faq-inner">
+        <div class="pt-section-header">
+          <h2>{{ s.faq_headline }}</h2>
+        </div>
+        {%- for block in faq_blocks -%}
+          <div class="pt-faq-item" {{ block.shopify_attributes }}>
+            <div class="pt-faq-q">{{ block.settings.question }}</div>
+            <div class="pt-faq-a">{{ block.settings.answer }}</div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} ========== PRODUCT GRID ========== {%- endcomment -%}
+  {%- if product_blocks.size > 0 -%}
+    <section class="pt-products">
+      <div class="pt-products-inner">
+        <div class="pt-section-header">
+          <h2>{{ s.products_headline }}</h2>
+          {%- if s.products_subtext != blank -%}
+            <p>{{ s.products_subtext }}</p>
+          {%- endif -%}
+        </div>
+        <div class="pt-products-grid">
+          {%- for block in product_blocks -%}
+            {%- assign p = block.settings.product -%}
+            {%- if p != blank -%}
+              <div class="pt-product-card" {{ block.shopify_attributes }}>
+                {%- if p.featured_image != blank -%}
+                  <img src="{{ p.featured_image | image_url: width: 600 }}" alt="{{ p.featured_image.alt | escape }}" loading="lazy">
+                {%- endif -%}
+                <div class="pt-product-card-body">
+                  <h3>{{ p.title }}</h3>
+                  <p>{{ p.description | strip_html | truncate: 100 }}</p>
+                  <a href="{{ p.url }}" class="pt-btn">Shop Now</a>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} ========== CLOSING CTA ========== {%- endcomment -%}
+  {%- if s.closing_headline != blank -%}
+    <section class="pt-closing-cta">
+      <h2>{{ s.closing_headline }}</h2>
+      {%- if s.closing_body != blank -%}
+        <p>{{ s.closing_body }}</p>
+      {%- endif -%}
+      <a href="{{ s.closing_cta_link }}" class="pt-btn">{{ s.closing_cta_text }}</a>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} ========== FOOTER ========== {%- endcomment -%}
+  <footer class="pt-footer" id="pt-footer-{{ sid }}">
+    <div class="pt-footer-copy">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</div>
+    <a href="/policies/terms-of-service">Terms of Service</a>
+    <a href="/policies/privacy-policy">Privacy Policy</a>
+  </footer>
+
+  {%- comment -%} ========== MOBILE STICKY CTA ========== {%- endcomment -%}
+  {%- if s.mobile_cta_text != blank -%}
+    <div id="pt-mobile-{{ sid }}">
+      {%- if s.mobile_urgency_text != blank -%}
+        <div class="pt-mobile-urgency">{{ s.mobile_urgency_text }}</div>
+      {%- endif -%}
+      <a href="{{ s.mobile_cta_link }}" class="pt-btn">{{ s.mobile_cta_text }}</a>
+    </div>
+  {%- endif -%}
+
+</div>
+
+<script>
+(function() {
+  'use strict';
+  var sid = '{{ section.id }}';
+
+  /* Countdown */
+  var bar = document.getElementById('pt-sticky-' + sid);
+  var timer = document.getElementById('pt-timer-' + sid);
+  if (bar && timer) {
+    var mins = parseInt(bar.getAttribute('data-minutes') || '20', 10);
+    var secs = parseInt(bar.getAttribute('data-seconds') || '45', 10);
+    var total = mins * 60 + secs;
+    (function tick() {
+      if (total < 0) total = 0;
+      timer.textContent = Math.floor(total/60) + ':' + ('0' + (total%60)).slice(-2);
+      if (total > 0) { total--; setTimeout(tick, 1000); }
+    })();
+  }
+
+  /* Marquee clone */
+  var mq = document.getElementById('pt-marquee-' + sid);
+  if (mq) { var cl = mq.cloneNode(true); cl.removeAttribute('id'); mq.parentNode.appendChild(cl); }
+
+  /* Review carousel (desktop) */
+  var track = document.getElementById('pt-rev-track-' + sid);
+  var prev = document.getElementById('pt-rev-prev-' + sid);
+  var next = document.getElementById('pt-rev-next-' + sid);
+  if (track && prev && next) {
+    var slides = track.querySelectorAll('.pt-review-slide');
+    var idx = 0, pv = 3, mx = Math.max(0, slides.length - pv);
+    function mv() { track.style.transform = 'translateX(' + -(idx * (100/pv)) + '%)'; }
+    prev.addEventListener('click', function() { idx = Math.max(0, idx-1); mv(); });
+    next.addEventListener('click', function() { idx = Math.min(mx, idx+1); mv(); });
+  }
+
+  /* FAQ accordion */
+  document.querySelectorAll('#pt-' + sid + ' .pt-faq-q').forEach(function(q) {
+    q.addEventListener('click', function() {
+      var it = this.parentElement, was = it.classList.contains('pt-open');
+      document.querySelectorAll('#pt-' + sid + ' .pt-faq-item.pt-open').forEach(function(o) { o.classList.remove('pt-open'); });
+      if (!was) it.classList.add('pt-open');
+    });
+  });
+
+  /* Buy box thumbnails */
+  var bbMain = document.getElementById('pt-bb-main-' + sid);
+  var thumbs = document.querySelectorAll('#pt-' + sid + ' .pt-buybox-thumb');
+  if (bbMain && thumbs.length) {
+    thumbs.forEach(function(t) {
+      t.addEventListener('click', function() {
+        thumbs.forEach(function(x) { x.classList.remove('pt-active'); });
+        this.classList.add('pt-active');
+        bbMain.src = this.getAttribute('data-full');
+      });
+    });
+  }
+
+  /* Mobile sticky CTA */
+  var mob = document.getElementById('pt-mobile-' + sid);
+  var foot = document.getElementById('pt-footer-' + sid);
+  var fv = false;
+  if (foot && mob && window.IntersectionObserver) {
+    new IntersectionObserver(function(e) { e.forEach(function(en) { fv = en.isIntersecting; if (fv) mob.classList.remove('pt-visible'); }); }, { threshold: 0 }).observe(foot);
+  }
+  var tk = false;
+  window.addEventListener('scroll', function() {
+    if (!tk) { window.requestAnimationFrame(function() {
+      if (mob) { if (window.scrollY > 150 && !fv) mob.classList.add('pt-visible'); else if (fv || window.scrollY <= 150) mob.classList.remove('pt-visible'); }
+      tk = false;
+    }); tk = true; }
+  });
+
+  /* Smooth scroll */
+  document.querySelectorAll('#pt-' + sid + ' a[href^="#"]').forEach(function(lnk) {
+    lnk.addEventListener('click', function(e) {
+      var tgt = document.querySelector(this.getAttribute('href'));
+      if (tgt) { e.preventDefault(); window.scrollTo({ top: tgt.getBoundingClientRect().top + window.pageYOffset - 60, behavior: 'smooth' }); }
+    });
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Primals Landing Page",
+  "tag": "div",
+  "settings": [
+    { "type": "header", "content": "Sticky Bar" },
+    { "type": "checkbox", "id": "show_sticky_bar", "label": "Show sticky bar", "default": true },
+    { "type": "text", "id": "sticky_bar_text", "label": "Sticky bar text", "default": "Order Now For Next Day Shipping" },
+    { "type": "range", "id": "sticky_bar_timer_minutes", "label": "Timer minutes", "min": 0, "max": 30, "step": 1, "default": 20 },
+    { "type": "range", "id": "sticky_bar_timer_seconds", "label": "Timer seconds", "min": 0, "max": 59, "step": 1, "default": 45 },
+    { "type": "text", "id": "sticky_bar_cta_text", "label": "Sticky bar CTA text", "default": "Shop Now" },
+    { "type": "url", "id": "sticky_bar_cta_link", "label": "Sticky bar CTA link" },
+
+    { "type": "header", "content": "Hero Section" },
+    { "type": "text", "id": "hero_eyebrow", "label": "Eyebrow text", "default": "Trusted by 10,000+ Women" },
+    { "type": "text", "id": "hero_headline", "label": "Headline" },
+    { "type": "textarea", "id": "hero_body", "label": "Body text" },
+    { "type": "text", "id": "hero_cta_text", "label": "CTA text", "default": "Shop Now" },
+    { "type": "url", "id": "hero_cta_link", "label": "CTA link" },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image" },
+
+    { "type": "header", "content": "Reviews Section" },
+    { "type": "text", "id": "reviews_headline", "label": "Reviews headline", "default": "What Our Customers Say" },
+    { "type": "text", "id": "reviews_subtext", "label": "Reviews subtext" },
+
+    { "type": "header", "content": "Buy Box" },
+    { "type": "text", "id": "buybox_eyebrow", "label": "Eyebrow text" },
+    { "type": "text", "id": "buybox_headline", "label": "Headline" },
+    { "type": "product", "id": "buybox_product", "label": "Product" },
+    { "type": "text", "id": "buybox_rating_text", "label": "Rating text", "default": "10,000+ Satisfied Customers" },
+    { "type": "textarea", "id": "buybox_description", "label": "Product description" },
+    { "type": "text", "id": "buybox_benefit_1", "label": "Benefit 1" },
+    { "type": "text", "id": "buybox_benefit_2", "label": "Benefit 2" },
+    { "type": "text", "id": "buybox_benefit_3", "label": "Benefit 3" },
+    { "type": "text", "id": "buybox_benefit_4", "label": "Benefit 4" },
+    { "type": "text", "id": "buybox_benefit_5", "label": "Benefit 5" },
+    { "type": "text", "id": "buybox_benefit_6", "label": "Benefit 6" },
+    { "type": "text", "id": "buybox_cta_text", "label": "CTA text", "default": "Shop Now" },
+    { "type": "url", "id": "buybox_cta_link", "label": "CTA link" },
+    { "type": "text", "id": "buybox_guarantee", "label": "Guarantee text", "default": "60-Day Scent Promise" },
+
+    { "type": "header", "content": "FAQ Section" },
+    { "type": "text", "id": "faq_headline", "label": "FAQ headline", "default": "Questions? We Have Answers" },
+
+    { "type": "header", "content": "Product Grid" },
+    { "type": "text", "id": "products_headline", "label": "Headline" },
+    { "type": "text", "id": "products_subtext", "label": "Subtext" },
+
+    { "type": "header", "content": "Closing CTA" },
+    { "type": "text", "id": "closing_headline", "label": "Headline" },
+    { "type": "text", "id": "closing_body", "label": "Body text" },
+    { "type": "text", "id": "closing_cta_text", "label": "CTA text", "default": "Shop Now" },
+    { "type": "url", "id": "closing_cta_link", "label": "CTA link" },
+
+    { "type": "header", "content": "Mobile Sticky CTA" },
+    { "type": "text", "id": "mobile_urgency_text", "label": "Urgency text" },
+    { "type": "text", "id": "mobile_cta_text", "label": "CTA text", "default": "Shop Now" },
+    { "type": "url", "id": "mobile_cta_link", "label": "CTA link" }
+  ],
+  "blocks": [
+    {
+      "type": "marquee_item",
+      "name": "Marquee Item",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text" }
+      ]
+    },
+    {
+      "type": "reason",
+      "name": "Reason Section",
+      "settings": [
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow (e.g. REASON #1: LABEL)" },
+        { "type": "text", "id": "headline", "label": "Headline" },
+        { "type": "textarea", "id": "body", "label": "Body text" },
+        { "type": "image_picker", "id": "image", "label": "Image (square recommended)" },
+        { "type": "text", "id": "bullet_1_label", "label": "Bullet 1 — Label" },
+        { "type": "text", "id": "bullet_1_text", "label": "Bullet 1 — Detail" },
+        { "type": "text", "id": "bullet_2_label", "label": "Bullet 2 — Label" },
+        { "type": "text", "id": "bullet_2_text", "label": "Bullet 2 — Detail" },
+        { "type": "text", "id": "bullet_3_label", "label": "Bullet 3 — Label" },
+        { "type": "text", "id": "bullet_3_text", "label": "Bullet 3 — Detail" }
+      ]
+    },
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "text", "id": "quote", "label": "Quote headline" },
+        { "type": "textarea", "id": "text", "label": "Full review text" },
+        { "type": "text", "id": "name", "label": "Reviewer name" },
+        { "type": "text", "id": "initials", "label": "Initials (2 letters)" }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question" },
+        { "type": "textarea", "id": "answer", "label": "Answer" }
+      ]
+    },
+    {
+      "type": "product_card",
+      "name": "Product Card",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Product" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Primals Landing Page",
+      "settings": {
+        "hero_headline": "Your Headline Goes Here",
+        "hero_cta_text": "Shop Now",
+        "reviews_headline": "What Our Customers Say",
+        "faq_headline": "Questions? We Have Answers",
+        "buybox_cta_text": "Shop Now",
+        "closing_headline": "Your Closing Headline",
+        "closing_cta_text": "Shop Now"
+      },
+      "blocks": [
+        { "type": "marquee_item", "settings": { "text": "Benefit 1" } },
+        { "type": "marquee_item", "settings": { "text": "Benefit 2" } },
+        { "type": "marquee_item", "settings": { "text": "Benefit 3" } },
+        { "type": "marquee_item", "settings": { "text": "Benefit 4" } },
+        { "type": "marquee_item", "settings": { "text": "Benefit 5" } },
+        { "type": "reason", "settings": { "eyebrow": "REASON #1", "headline": "Reason 1 Headline" } },
+        { "type": "reason", "settings": { "eyebrow": "REASON #2", "headline": "Reason 2 Headline" } },
+        { "type": "reason", "settings": { "eyebrow": "REASON #3", "headline": "Reason 3 Headline" } },
+        { "type": "reason", "settings": { "eyebrow": "REASON #4", "headline": "Reason 4 Headline" } },
+        { "type": "reason", "settings": { "eyebrow": "REASON #5", "headline": "Reason 5 Headline" } },
+        { "type": "review", "settings": { "quote": "Review headline here", "text": "Full review text goes here.", "name": "Name", "initials": "NA" } },
+        { "type": "review", "settings": { "quote": "Another review headline", "text": "Another review goes here.", "name": "Name", "initials": "NA" } },
+        { "type": "review", "settings": { "quote": "Third review headline", "text": "Third review text.", "name": "Name", "initials": "NA" } },
+        { "type": "faq", "settings": { "question": "Your first question?", "answer": "Your answer goes here." } },
+        { "type": "faq", "settings": { "question": "Your second question?", "answer": "Your answer goes here." } },
+        { "type": "faq", "settings": { "question": "Your third question?", "answer": "Your answer goes here." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
