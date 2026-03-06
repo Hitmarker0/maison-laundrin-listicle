@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Landing Page Template</title>
+<meta name="description" content="[YOUR META DESCRIPTION]">
+<style>
+/*
+  PRIMALS-STYLE LANDING PAGE TEMPLATE
+  ====================================
+  Exact replica of Primals' funnel page design system.
+  Fonts: Oswald (headings) + Barlow (body)
+  Colors: Green primary (#547059), Green accent (#4B9413), Dark (#121212)
+
+  FORMAT: Paste inner content (from <style> to </script>) into Shopify Page (HTML mode).
+  IMAGES: Replace all placeholder src values with actual Shopify CDN URLs.
+  LINKS: Replace all #buy-box hrefs with actual product URLs.
+  COPY: Replace all [PLACEHOLDER] text with your brand copy.
+
+  To customize colors for your brand, edit the CSS custom properties in :root below.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap');
+
+/* === HIDE SHOPIFY CHROME === */
+.header-sticky-wrapper,
+#HeaderWrapper,
+.site-header,
+.site-footer,
+.shopify-section-footer,
+.shopify-section-group-header-group,
+.shopify-section-group-footer-group,
+.section-header,
+.page-content > .section-header,
+#shopify-section-announcement-bar,
+.announcement-bar,
+.cart-drawer,
+.toolbar,
+#shopify-section-header,
+#shopify-section-footer {
+  display: none !important;
+}
+
+/* === CSS CUSTOM PROPERTIES === */
+:root {
+  --primary: #547059;
+  --primary-light: #6a8a70;
+  --accent: #4B9413;
+  --accent-hover: #3E7D10;
+  --accent-light: #6DD71C;
+  --dark: #121212;
+  --dark-80: rgba(18,18,18,0.8);
+  --light-bg: #EAEFEB;
+  --medium-bg: #DEDEDE;
+  --urgency: #900000;
+  --white: #FFFFFF;
+  --text-dark: #121212;
+  --text-light: #FFFFFF;
+  --text-muted: #555555;
+  --heading-font: 'Oswald', sans-serif;
+  --body-font: 'Barlow', sans-serif;
+  --btn-radius: 4px;
+  --card-radius: 20px;
+  --max-width: 1280px;
+  --section-pad: 64px 24px;
+  --section-pad-md: 48px 24px;
+}
+
+/* === RESET & BASE === */
+.pt-page * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.pt-page {
+  font-family: var(--body-font);
+  color: var(--text-dark);
+  line-height: 1.6;
+  background: var(--white);
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+.pt-page img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pt-page a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.pt-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* === STICKY COUNTDOWN BAR === */
+.pt-countdown-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: var(--dark);
+  color: var(--text-light);
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.pt-countdown-text {
+  letter-spacing: 0.02em;
+}
+
+.pt-countdown-timer {
+  font-family: var(--heading-font);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-light);
+  font-variant-numeric: tabular-nums;
+  min-width: 52px;
+  text-align: center;
+}
+
+.pt-countdown-bar .pt-btn {
+  padding: 6px 20px;
+  font-size: 0.85rem;
+}
+
+/* === BUTTONS === */
+.pt-btn {
+  display: inline-block;
+  font-family: var(--body-font);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 12px 32px;
+  border-radius: var(--btn-radius);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  text-align: center;
+  letter-spacing: 0.02em;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pt-btn-accent {
+  background: var(--accent);
+  color: var(--text-light);
+}
+
+.pt-btn-accent:hover {
+  background: var(--accent-hover);
+}
+
+.pt-btn-primary {
+  background: var(--primary);
+  color: var(--text-light);
+}
+
+.pt-btn-primary:hover {
+  background: var(--primary-light);
+}
+
+.pt-btn-full {
+  display: block;
+  width: 100%;
+}
+
+/* === HERO SECTION === */
+.pt-hero {
+  padding: 80px 24px 64px;
+  background: var(--white);
+}
+
+.pt-hero-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.pt-hero-img {
+  flex: 1;
+  min-width: 0;
+}
+
+.pt-hero-img img {
+  width: 100%;
+  max-width: 640px;
+  border-radius: 8px;
+}
+
+.pt-hero-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.pt-eyebrow {
+  font-family: var(--body-font);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.pt-hero-content h2 {
+  font-family: var(--heading-font);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.pt-hero-body {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.pt-hero .pt-btn {
+  font-size: 1.05rem;
+  padding: 14px 40px;
+}
+
+/* === MARQUEE BAR === */
+.pt-marquee-wrap {
+  background: var(--primary);
+  padding: 16px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.pt-marquee {
+  display: inline-flex;
+  align-items: center;
+  animation: pt-marquee-scroll 25s linear infinite;
+}
+
+.pt-marquee:hover {
+  animation-play-state: paused;
+}
+
+.pt-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 36px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.pt-marquee-item .pt-marquee-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+@keyframes pt-marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* === REASON SECTIONS (5 alternating) === */
+.pt-reason-section {
+  padding: var(--section-pad);
+}
+
+.pt-reason-section.pt-bg-light {
+  background: var(--light-bg);
+}
+
+.pt-reason-section.pt-bg-white {
+  background: var(--white);
+}
+
+.pt-reason {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.pt-reason.pt-img-right {
+  flex-direction: row;
+}
+
+.pt-reason.pt-img-left {
+  flex-direction: row-reverse;
+}
+
+.pt-reason-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.pt-reason-img {
+  flex: 1;
+  min-width: 0;
+}
+
+.pt-reason-img img {
+  width: 100%;
+  max-width: 640px;
+  border-radius: 8px;
+}
+
+.pt-reason-eyebrow {
+  font-family: var(--body-font);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.pt-reason-text h3 {
+  font-family: var(--heading-font);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.pt-reason-body {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+/* === ICON LIST (within reasons) === */
+.pt-icon-list {
+  list-style: none;
+}
+
+.pt-icon-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 18px;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-dark);
+}
+
+.pt-icon-list li .pt-icon-circle {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background: var(--light-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--accent);
+}
+
+.pt-icon-list li strong {
+  display: block;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 2px;
+}
+
+.pt-icon-list li span {
+  color: var(--text-muted);
+}
+
+/* === REVIEWS SECTION === */
+.pt-reviews {
+  padding: var(--section-pad);
+  background: var(--white);
+}
+
+.pt-reviews-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.pt-section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.pt-section-header h2 {
+  font-family: var(--heading-font);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.pt-section-header p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* Desktop review carousel */
+.pt-reviews-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.pt-reviews-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.pt-review-slide {
+  flex: 0 0 33.3333%;
+  padding: 0 12px;
+}
+
+.pt-review-card {
+  background: var(--white);
+  border-radius: var(--card-radius);
+  padding: 28px 24px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pt-review-stars {
+  color: #f5a623;
+  font-size: 1.1rem;
+  margin-bottom: 14px;
+  letter-spacing: 2px;
+}
+
+.pt-review-quote {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+
+.pt-review-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 18px;
+  flex: 1;
+}
+
+.pt-review-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pt-review-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--light-bg);
+}
+
+.pt-review-avatar-placeholder {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--light-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.pt-review-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.pt-review-badge {
+  font-size: 0.72rem;
+  color: var(--accent);
+  font-weight: 600;
+  display: block;
+}
+
+/* Carousel arrows */
+.pt-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  z-index: 10;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.pt-carousel-arrow:hover {
+  transform: translateY(-50%) translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.pt-carousel-arrow.pt-prev {
+  left: -8px;
+}
+
+.pt-carousel-arrow.pt-next {
+  right: -8px;
+}
+
+/* Mobile review scroll */
+.pt-reviews-mobile {
+  display: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 16px;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+}
+
+.pt-reviews-mobile::-webkit-scrollbar {
+  display: none;
+}
+
+.pt-reviews-mobile .pt-review-card-wrap {
+  flex: 0 0 85vw;
+  max-width: 400px;
+  scroll-snap-align: start;
+}
+
+/* === MOBILE STICKY CTA === */
+.pt-mobile-sticky {
+  display: none;
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92%, 540px);
+  z-index: 9999;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.pt-mobile-sticky.pt-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.pt-mobile-urgency {
+  background: var(--urgency);
+  color: var(--text-light);
+  text-align: center;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  animation: pt-urgency-blink 1.2s infinite;
+}
+
+@keyframes pt-urgency-blink {
+  0%, 100% { background: var(--urgency); }
+  50% { background: #000000; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pt-mobile-urgency { animation: none; }
+}
+
+.pt-mobile-sticky .pt-btn {
+  display: block;
+  width: 100%;
+  padding: 15px 24px;
+  font-size: 1rem;
+  border-radius: 0 0 12px 12px;
+}
+
+/* === BUY BOX === */
+.pt-buybox {
+  padding: var(--section-pad);
+  background: var(--light-bg);
+}
+
+.pt-buybox-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.pt-buybox-content {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.pt-buybox-gallery {
+  flex: 1;
+  min-width: 0;
+}
+
+.pt-buybox-main-img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.pt-buybox-thumbs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+
+.pt-buybox-thumbs::-webkit-scrollbar {
+  display: none;
+}
+
+.pt-buybox-thumb {
+  flex: 0 0 72px;
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  opacity: 0.6;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+
+.pt-buybox-thumb.pt-active,
+.pt-buybox-thumb:hover {
+  opacity: 1;
+  border-color: var(--accent);
+}
+
+.pt-buybox-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.pt-buybox-details h2 {
+  font-family: var(--heading-font);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.pt-buybox-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+.pt-buybox-rating .pt-stars {
+  color: #f5a623;
+  letter-spacing: 2px;
+}
+
+.pt-buybox-rating span {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.pt-buybox-price {
+  font-family: var(--heading-font);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+}
+
+.pt-buybox-price .pt-price-compare {
+  text-decoration: line-through;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-left: 8px;
+  font-weight: 400;
+}
+
+.pt-buybox-desc {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.pt-buybox-benefits {
+  list-style: none;
+  margin-bottom: 28px;
+}
+
+.pt-buybox-benefits li {
+  padding: 8px 0;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  line-height: 1.55;
+}
+
+.pt-buybox-benefits li:last-child {
+  border-bottom: none;
+}
+
+.pt-buybox-benefits li strong {
+  font-weight: 700;
+}
+
+.pt-buybox .pt-btn {
+  font-size: 1.1rem;
+  padding: 16px 40px;
+  margin-bottom: 12px;
+}
+
+.pt-buybox-guarantee {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* === FAQ ACCORDION === */
+.pt-faq {
+  padding: var(--section-pad);
+  background: var(--light-bg);
+}
+
+.pt-faq-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.pt-faq-item {
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+
+.pt-faq-q {
+  font-family: var(--body-font);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+  min-height: 56px;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.pt-faq-q::after {
+  content: "+";
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  width: 28px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.pt-faq-item.pt-open .pt-faq-q::after {
+  content: "\2212";
+}
+
+.pt-faq-a {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  padding: 0 0 20px 0;
+  display: none;
+}
+
+.pt-faq-item.pt-open .pt-faq-a {
+  display: block;
+}
+
+/* === PRODUCT GRID === */
+.pt-products {
+  padding: var(--section-pad);
+  background: var(--white);
+}
+
+.pt-products-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.pt-products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.pt-product-card {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.08);
+  transition: box-shadow 0.2s;
+}
+
+.pt-product-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.pt-product-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.pt-product-card-body {
+  padding: 20px;
+}
+
+.pt-product-card h3 {
+  font-family: var(--heading-font);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.pt-product-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.pt-product-card .pt-btn {
+  font-size: 0.9rem;
+  padding: 10px 24px;
+}
+
+/* === FOOTER === */
+.pt-footer {
+  background: var(--dark);
+  color: var(--text-light);
+  padding: 28px 24px;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.pt-footer a {
+  color: #aaa;
+  margin: 0 8px;
+  transition: color 0.2s;
+}
+
+.pt-footer a:hover {
+  color: var(--text-light);
+}
+
+.pt-footer-copy {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+/* ================================================
+   MOBILE RESPONSIVE
+   ================================================ */
+@media (max-width: 768px) {
+  .pt-countdown-bar {
+    padding: 8px 12px;
+    gap: 10px;
+    font-size: 0.8rem;
+  }
+
+  .pt-countdown-bar .pt-btn {
+    padding: 6px 16px;
+    font-size: 0.78rem;
+  }
+
+  /* Hero */
+  .pt-hero {
+    padding: 68px 16px 40px;
+  }
+
+  .pt-hero-inner {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .pt-hero-img img {
+    max-width: 100%;
+  }
+
+  .pt-hero-content h2 {
+    font-size: 1.65rem;
+  }
+
+  .pt-hero-body {
+    font-size: 0.95rem;
+  }
+
+  .pt-hero .pt-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Marquee */
+  .pt-marquee-wrap {
+    padding: 12px 0;
+  }
+
+  .pt-marquee-item {
+    font-size: 0.78rem;
+    padding: 0 20px;
+    gap: 8px;
+  }
+
+  .pt-marquee-item .pt-marquee-icon {
+    width: 22px;
+    height: 22px;
+    font-size: 1.05rem;
+  }
+
+  /* Reason sections */
+  .pt-reason-section {
+    padding: 40px 16px;
+  }
+
+  .pt-reason {
+    flex-direction: column !important;
+    gap: 24px;
+  }
+
+  .pt-reason-img img {
+    max-width: 100%;
+  }
+
+  .pt-reason-text h3 {
+    font-size: 1.3rem;
+  }
+
+  .pt-reason-body {
+    font-size: 0.92rem;
+  }
+
+  .pt-icon-list li {
+    font-size: 0.88rem;
+    gap: 12px;
+  }
+
+  .pt-icon-list li .pt-icon-circle {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
+
+  /* Section headers */
+  .pt-section-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .pt-section-header p {
+    font-size: 0.92rem;
+  }
+
+  /* Reviews */
+  .pt-reviews {
+    padding: 48px 16px;
+  }
+
+  .pt-reviews-carousel {
+    display: none;
+  }
+
+  .pt-reviews-mobile {
+    display: flex;
+  }
+
+  /* Mobile sticky CTA */
+  .pt-mobile-sticky {
+    display: block;
+  }
+
+  /* Buy box */
+  .pt-buybox {
+    padding: 40px 16px;
+  }
+
+  .pt-buybox-content {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .pt-buybox-details h2 {
+    font-size: 1.5rem;
+  }
+
+  .pt-buybox-price {
+    font-size: 1.3rem;
+  }
+
+  .pt-buybox .pt-btn {
+    padding: 16px 24px;
+    font-size: 1rem;
+  }
+
+  /* FAQ */
+  .pt-faq {
+    padding: 40px 16px;
+  }
+
+  .pt-faq-q {
+    font-size: 0.95rem;
+    padding: 16px 0;
+  }
+
+  .pt-faq-a {
+    font-size: 0.88rem;
+  }
+
+  /* Product grid */
+  .pt-products {
+    padding: 40px 16px;
+  }
+
+  .pt-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .pt-product-card h3 {
+    font-size: 1rem;
+  }
+
+  .pt-product-card p {
+    font-size: 0.82rem;
+  }
+
+  .pt-product-card .pt-btn {
+    font-size: 0.82rem;
+    padding: 8px 16px;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Footer */
+  .pt-footer {
+    padding-bottom: 90px;
+  }
+}
+
+/* === SMALL PHONES === */
+@media (max-width: 375px) {
+  .pt-hero-content h2 {
+    font-size: 1.4rem;
+  }
+
+  .pt-reason-text h3 {
+    font-size: 1.15rem;
+  }
+
+  .pt-section-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .pt-review-card {
+    padding: 22px 18px;
+  }
+
+  .pt-buybox-details h2 {
+    font-size: 1.3rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="pt-page">
+
+  <!-- ========== STICKY COUNTDOWN BAR ==========
+       Customize: Change countdown time via data-minutes attribute.
+       To disable: Remove this entire block.
+  -->
+  <div class="pt-countdown-bar" id="pt-countdown-bar" data-minutes="20" data-seconds="45">
+    <span class="pt-countdown-text">[YOUR URGENCY TEXT — e.g. "Order Now For Next Day Shipping"]</span>
+    <span class="pt-countdown-timer" id="pt-countdown">20:45</span>
+    <a href="#buy-box" class="pt-btn pt-btn-accent">Shop Now</a>
+  </div>
+
+  <!-- ========== HERO SECTION ==========
+       Layout: Image LEFT, Content RIGHT (stacks on mobile)
+  -->
+  <section class="pt-hero">
+    <div class="pt-hero-inner">
+      <div class="pt-hero-img">
+        <!-- REPLACE: 640x640 hero image (supports GIF for animation) -->
+        <img src="https://placehold.co/640x640/EAEFEB/547059?text=Hero+Image" alt="[Hero image alt text]">
+      </div>
+      <div class="pt-hero-content">
+        <div class="pt-eyebrow">[SOCIAL PROOF — e.g. "50,000+ Happy Customers"]</div>
+        <h2>[YOUR HERO HEADLINE]</h2>
+        <p class="pt-hero-body">[Your hero body copy goes here. This should be 2-3 sentences that set up the problem or the promise. Keep it compelling and benefit-focused.]</p>
+        <a href="#buy-box" class="pt-btn pt-btn-accent">Shop Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SCROLLING MARQUEE BAR ==========
+       Add/remove items as needed. Duplicate the full set once for seamless looping.
+  -->
+  <div class="pt-marquee-wrap">
+    <div class="pt-marquee" id="pt-marquee">
+      <div class="pt-marquee-item"><span class="pt-marquee-icon">&#10003;</span> [Benefit 1]</div>
+      <div class="pt-marquee-item"><span class="pt-marquee-icon">&#10003;</span> [Benefit 2]</div>
+      <div class="pt-marquee-item"><span class="pt-marquee-icon">&#10003;</span> [Benefit 3]</div>
+      <div class="pt-marquee-item"><span class="pt-marquee-icon">&#10003;</span> [Benefit 4]</div>
+      <div class="pt-marquee-item"><span class="pt-marquee-icon">&#10003;</span> [Benefit 5]</div>
+      <!-- Duplicated for seamless scroll -->
+      <div class="pt-marquee-item"><span class="pt-marquee-icon">&#10003;</span> [Benefit 1]</div>
+      <div class="pt-marquee-item"><span class="pt-marquee-icon">&#10003;</span> [Benefit 2]</div>
+      <div class="pt-marquee-item"><span class="pt-marquee-icon">&#10003;</span> [Benefit 3]</div>
+      <div class="pt-marquee-item"><span class="pt-marquee-icon">&#10003;</span> [Benefit 4]</div>
+      <div class="pt-marquee-item"><span class="pt-marquee-icon">&#10003;</span> [Benefit 5]</div>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       REASON #1 — Image RIGHT, Light background
+       ========================================================== -->
+  <div class="pt-reason-section pt-bg-light">
+    <div class="pt-reason pt-img-right">
+      <div class="pt-reason-text">
+        <div class="pt-reason-eyebrow">REASON #1: [SHORT LABEL]</div>
+        <h3>[Reason 1 Headline]</h3>
+        <p class="pt-reason-body">[Your body copy for reason 1. Explain the problem or benefit in 2-3 sentences. Be specific and use concrete details.]</p>
+        <ul class="pt-icon-list">
+          <li>
+            <div class="pt-icon-circle">&#10003;</div>
+            <div><strong>[Bullet point 1 label]</strong><span> [Supporting detail for bullet 1]</span></div>
+          </li>
+          <li>
+            <div class="pt-icon-circle">&#10003;</div>
+            <div><strong>[Bullet point 2 label]</strong><span> [Supporting detail for bullet 2]</span></div>
+          </li>
+          <li>
+            <div class="pt-icon-circle">&#10003;</div>
+            <div><strong>[Bullet point 3 label]</strong><span> [Supporting detail for bullet 3]</span></div>
+          </li>
+        </ul>
+      </div>
+      <div class="pt-reason-img">
+        <!-- REPLACE: 640x640 image -->
+        <img src="https://placehold.co/640x640/EAEFEB/547059?text=Reason+1" alt="[Reason 1 image]">
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       REASON #2 — Image LEFT, White background
+       ========================================================== -->
+  <div class="pt-reason-section pt-bg-white">
+    <div class="pt-reason pt-img-left">
+      <div class="pt-reason-text">
+        <div class="pt-reason-eyebrow">REASON #2: [SHORT LABEL]</div>
+        <h3>[Reason 2 Headline]</h3>
+        <p class="pt-reason-body">[Your body copy for reason 2.]</p>
+        <ul class="pt-icon-list">
+          <li>
+            <div class="pt-icon-circle">&#10003;</div>
+            <div><strong>[Bullet point 1]</strong><span> [Detail]</span></div>
+          </li>
+          <li>
+            <div class="pt-icon-circle">&#10003;</div>
+            <div><strong>[Bullet point 2]</strong><span> [Detail]</span></div>
+          </li>
+          <li>
+            <div class="pt-icon-circle">&#10003;</div>
+            <div><strong>[Bullet point 3]</strong><span> [Detail]</span></div>
+          </li>
+        </ul>
+      </div>
+      <div class="pt-reason-img">
+        <img src="https://placehold.co/640x640/EAEFEB/547059?text=Reason+2" alt="[Reason 2 image]">
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       REASON #3 — Image RIGHT, Light background
+       ========================================================== -->
+  <div class="pt-reason-section pt-bg-light">
+    <div class="pt-reason pt-img-right">
+      <div class="pt-reason-text">
+        <div class="pt-reason-eyebrow">REASON #3: [SHORT LABEL]</div>
+        <h3>[Reason 3 Headline]</h3>
+        <p class="pt-reason-body">[Your body copy for reason 3.]</p>
+        <ul class="pt-icon-list">
+          <li>
+            <div class="pt-icon-circle">&#10003;</div>
+            <div><strong>[Bullet point 1]</strong><span> [Detail]</span></div>
+          </li>
+          <li>
+            <div class="pt-icon-circle">&#10003;</div>
+            <div><strong>[Bullet point 2]</strong><span> [Detail]</span></div>
+          </li>
+          <li>
+            <div class="pt-icon-circle">&#10003;</div>
+            <div><strong>[Bullet point 3]</strong><span> [Detail]</span></div>
+          </li>
+        </ul>
+      </div>
+      <div class="pt-reason-img">
+        <img src="https://placehold.co/640x640/EAEFEB/547059?text=Reason+3" alt="[Reason 3 image]">
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       REASON #4 — Image LEFT, White background
+       ========================================================== -->
+  <div class="pt-reason-section pt-bg-white">
+    <div class="pt-reason pt-img-left">
+      <div class="pt-reason-text">
+        <div class="pt-reason-eyebrow">REASON #4: [SHORT LABEL]</div>
+        <h3>[Reason 4 Headline]</h3>
+        <p class="pt-reason-body">[Your body copy for reason 4.]</p>
+        <ul class="pt-icon-list">
+          <li>
+            <div class="pt-icon-circle">&#10003;</div>
+            <div><strong>[Bullet point 1]</strong><span> [Detail]</span></div>
+          </li>
+          <li>
+            <div class="pt-icon-circle">&#10003;</div>
+            <div><strong>[Bullet point 2]</strong><span> [Detail]</span></div>
+          </li>
+          <li>
+            <div class="pt-icon-circle">&#10003;</div>
+            <div><strong>[Bullet point 3]</strong><span> [Detail]</span></div>
+          </li>
+        </ul>
+      </div>
+      <div class="pt-reason-img">
+        <img src="https://placehold.co/640x640/EAEFEB/547059?text=Reason+4" alt="[Reason 4 image]">
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       REASON #5 — Image RIGHT, Light background
+       ========================================================== -->
+  <div class="pt-reason-section pt-bg-light">
+    <div class="pt-reason pt-img-right">
+      <div class="pt-reason-text">
+        <div class="pt-reason-eyebrow">REASON #5: [SHORT LABEL]</div>
+        <h3>[Reason 5 Headline]</h3>
+        <p class="pt-reason-body">[Your body copy for reason 5.]</p>
+        <ul class="pt-icon-list">
+          <li>
+            <div class="pt-icon-circle">&#10003;</div>
+            <div><strong>[Bullet point 1]</strong><span> [Detail]</span></div>
+          </li>
+          <li>
+            <div class="pt-icon-circle">&#10003;</div>
+            <div><strong>[Bullet point 2]</strong><span> [Detail]</span></div>
+          </li>
+          <li>
+            <div class="pt-icon-circle">&#10003;</div>
+            <div><strong>[Bullet point 3]</strong><span> [Detail]</span></div>
+          </li>
+        </ul>
+      </div>
+      <div class="pt-reason-img">
+        <img src="https://placehold.co/640x640/EAEFEB/547059?text=Reason+5" alt="[Reason 5 image]">
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== REVIEWS SECTION ========== -->
+  <section class="pt-reviews">
+    <div class="pt-reviews-inner">
+      <div class="pt-section-header">
+        <h2>[REVIEWS HEADLINE]</h2>
+        <p>[Supporting text about your happy customers]</p>
+      </div>
+
+      <!-- Desktop carousel -->
+      <div class="pt-reviews-carousel" id="pt-reviews-carousel">
+        <div class="pt-reviews-track" id="pt-reviews-track">
+
+          <div class="pt-review-slide">
+            <div class="pt-review-card">
+              <div class="pt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <div class="pt-review-quote">"[Review 1 headline quote]"</div>
+              <div class="pt-review-text">[Full review 1 text. Keep it authentic and specific.]</div>
+              <div class="pt-review-author">
+                <div class="pt-review-avatar-placeholder">A1</div>
+                <div>
+                  <div class="pt-review-name">[Name 1]</div>
+                  <span class="pt-review-badge">Verified Buyer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-review-slide">
+            <div class="pt-review-card">
+              <div class="pt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <div class="pt-review-quote">"[Review 2 headline quote]"</div>
+              <div class="pt-review-text">[Full review 2 text.]</div>
+              <div class="pt-review-author">
+                <div class="pt-review-avatar-placeholder">A2</div>
+                <div>
+                  <div class="pt-review-name">[Name 2]</div>
+                  <span class="pt-review-badge">Verified Buyer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-review-slide">
+            <div class="pt-review-card">
+              <div class="pt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <div class="pt-review-quote">"[Review 3 headline quote]"</div>
+              <div class="pt-review-text">[Full review 3 text.]</div>
+              <div class="pt-review-author">
+                <div class="pt-review-avatar-placeholder">A3</div>
+                <div>
+                  <div class="pt-review-name">[Name 3]</div>
+                  <span class="pt-review-badge">Verified Buyer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-review-slide">
+            <div class="pt-review-card">
+              <div class="pt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <div class="pt-review-quote">"[Review 4 headline quote]"</div>
+              <div class="pt-review-text">[Full review 4 text.]</div>
+              <div class="pt-review-author">
+                <div class="pt-review-avatar-placeholder">A4</div>
+                <div>
+                  <div class="pt-review-name">[Name 4]</div>
+                  <span class="pt-review-badge">Verified Buyer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-review-slide">
+            <div class="pt-review-card">
+              <div class="pt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <div class="pt-review-quote">"[Review 5 headline quote]"</div>
+              <div class="pt-review-text">[Full review 5 text.]</div>
+              <div class="pt-review-author">
+                <div class="pt-review-avatar-placeholder">A5</div>
+                <div>
+                  <div class="pt-review-name">[Name 5]</div>
+                  <span class="pt-review-badge">Verified Buyer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-review-slide">
+            <div class="pt-review-card">
+              <div class="pt-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <div class="pt-review-quote">"[Review 6 headline quote]"</div>
+              <div class="pt-review-text">[Full review 6 text.]</div>
+              <div class="pt-review-author">
+                <div class="pt-review-avatar-placeholder">A6</div>
+                <div>
+                  <div class="pt-review-name">[Name 6]</div>
+                  <span class="pt-review-badge">Verified Buyer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <button class="pt-carousel-arrow pt-prev" id="pt-review-prev" aria-label="Previous reviews">&#8249;</button>
+        <button class="pt-carousel-arrow pt-next" id="pt-review-next" aria-label="Next reviews">&#8250;</button>
+      </div>
+
+      <!-- Mobile scroll carousel (hidden on desktop) -->
+      <div class="pt-reviews-mobile" id="pt-reviews-mobile">
+        <!-- JS clones review cards here -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== BUY BOX ========== -->
+  <section class="pt-buybox" id="buy-box">
+    <div class="pt-buybox-inner">
+      <div class="pt-section-header">
+        <div class="pt-eyebrow">[EYEBROW — e.g. "MAKE THE SWITCH TODAY"]</div>
+        <h2>[BUY BOX HEADLINE]</h2>
+      </div>
+      <div class="pt-buybox-content">
+        <div class="pt-buybox-gallery">
+          <!-- REPLACE: Main product image -->
+          <img class="pt-buybox-main-img" id="pt-buybox-main" src="https://placehold.co/640x640/EAEFEB/547059?text=Product+Image+1" alt="[Product image]">
+          <!-- REPLACE: Thumbnail strip — add as many as needed -->
+          <div class="pt-buybox-thumbs">
+            <img class="pt-buybox-thumb pt-active" src="https://placehold.co/72x72/EAEFEB/547059?text=1" data-full="https://placehold.co/640x640/EAEFEB/547059?text=Product+Image+1" alt="Thumb 1">
+            <img class="pt-buybox-thumb" src="https://placehold.co/72x72/EAEFEB/547059?text=2" data-full="https://placehold.co/640x640/EAEFEB/547059?text=Product+Image+2" alt="Thumb 2">
+            <img class="pt-buybox-thumb" src="https://placehold.co/72x72/EAEFEB/547059?text=3" data-full="https://placehold.co/640x640/EAEFEB/547059?text=Product+Image+3" alt="Thumb 3">
+            <img class="pt-buybox-thumb" src="https://placehold.co/72x72/EAEFEB/547059?text=4" data-full="https://placehold.co/640x640/EAEFEB/547059?text=Product+Image+4" alt="Thumb 4">
+            <img class="pt-buybox-thumb" src="https://placehold.co/72x72/EAEFEB/547059?text=5" data-full="https://placehold.co/640x640/EAEFEB/547059?text=Product+Image+5" alt="Thumb 5">
+          </div>
+        </div>
+        <div class="pt-buybox-details">
+          <div class="pt-buybox-rating">
+            <span class="pt-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span>[X,XXX+ Satisfied Customers]</span>
+          </div>
+          <h2>[PRODUCT NAME]</h2>
+          <div class="pt-buybox-price">$XX.XX <span class="pt-price-compare">$XX.XX</span></div>
+          <p class="pt-buybox-desc">[Short product description — 1-2 sentences about what makes this product different.]</p>
+          <ul class="pt-buybox-benefits">
+            <li><strong>[Benefit 1]</strong> — [detail]</li>
+            <li><strong>[Benefit 2]</strong> — [detail]</li>
+            <li><strong>[Benefit 3]</strong> — [detail]</li>
+            <li><strong>[Benefit 4]</strong> — [detail]</li>
+            <li><strong>[Benefit 5]</strong> — [detail]</li>
+            <li><strong>[Benefit 6]</strong> — [detail]</li>
+          </ul>
+          <!-- REPLACE: Update href to actual product URL -->
+          <a href="[YOUR-PRODUCT-URL]" class="pt-btn pt-btn-accent pt-btn-full">Shop Now</a>
+          <p class="pt-buybox-guarantee">[Guarantee text — e.g. "60-Day Money Back Guarantee"]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ACCORDION ========== -->
+  <section class="pt-faq">
+    <div class="pt-faq-inner">
+      <div class="pt-section-header">
+        <h2>Questions? We Have Answers</h2>
+      </div>
+
+      <div class="pt-faq-item">
+        <div class="pt-faq-q">[FAQ Question 1]</div>
+        <div class="pt-faq-a">[FAQ Answer 1 — be thorough and address the objection directly.]</div>
+      </div>
+
+      <div class="pt-faq-item">
+        <div class="pt-faq-q">[FAQ Question 2]</div>
+        <div class="pt-faq-a">[FAQ Answer 2]</div>
+      </div>
+
+      <div class="pt-faq-item">
+        <div class="pt-faq-q">[FAQ Question 3]</div>
+        <div class="pt-faq-a">[FAQ Answer 3]</div>
+      </div>
+
+      <div class="pt-faq-item">
+        <div class="pt-faq-q">[FAQ Question 4]</div>
+        <div class="pt-faq-a">[FAQ Answer 4]</div>
+      </div>
+
+      <div class="pt-faq-item">
+        <div class="pt-faq-q">[FAQ Question 5]</div>
+        <div class="pt-faq-a">[FAQ Answer 5]</div>
+      </div>
+
+      <div class="pt-faq-item">
+        <div class="pt-faq-q">[FAQ Question 6]</div>
+        <div class="pt-faq-a">[FAQ Answer 6]</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== PRODUCT GRID ========== -->
+  <section class="pt-products">
+    <div class="pt-products-inner">
+      <div class="pt-section-header">
+        <h2>[PRODUCT GRID HEADLINE]</h2>
+        <p>[Supporting text — encourage exploring more products]</p>
+      </div>
+      <div class="pt-products-grid">
+
+        <div class="pt-product-card">
+          <img src="https://placehold.co/600x600/EAEFEB/547059?text=Product+A" alt="[Product A]">
+          <div class="pt-product-card-body">
+            <h3>[Product A Name]</h3>
+            <p>[Short description of Product A]</p>
+            <a href="[PRODUCT-A-URL]" class="pt-btn pt-btn-accent">Shop Now</a>
+          </div>
+        </div>
+
+        <div class="pt-product-card">
+          <img src="https://placehold.co/600x600/EAEFEB/547059?text=Product+B" alt="[Product B]">
+          <div class="pt-product-card-body">
+            <h3>[Product B Name]</h3>
+            <p>[Short description of Product B]</p>
+            <a href="[PRODUCT-B-URL]" class="pt-btn pt-btn-accent">Shop Now</a>
+          </div>
+        </div>
+
+        <div class="pt-product-card">
+          <img src="https://placehold.co/600x600/EAEFEB/547059?text=Product+C" alt="[Product C]">
+          <div class="pt-product-card-body">
+            <h3>[Product C Name]</h3>
+            <p>[Short description of Product C]</p>
+            <a href="[PRODUCT-C-URL]" class="pt-btn pt-btn-accent">Shop Now</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="pt-footer" id="pt-footer">
+    <div class="pt-footer-copy">Copyright 2026</div>
+    <a href="/policies/terms-of-service">Terms of Service</a>
+    <a href="/policies/privacy-policy">Privacy Policy</a>
+  </footer>
+
+  <!-- ========== MOBILE STICKY CTA ========== -->
+  <div class="pt-mobile-sticky" id="pt-mobile-sticky">
+    <div class="pt-mobile-urgency">[URGENCY TEXT — e.g. "Only a few left in stock!"]</div>
+    <a href="#buy-box" class="pt-btn pt-btn-accent">[CTA TEXT — e.g. "Shop Now"]</a>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  /* ===================================
+     COUNTDOWN TIMER
+     =================================== */
+  var bar = document.getElementById('pt-countdown-bar');
+  var display = document.getElementById('pt-countdown');
+  if (bar && display) {
+    var mins = parseInt(bar.getAttribute('data-minutes') || '20', 10);
+    var secs = parseInt(bar.getAttribute('data-seconds') || '45', 10);
+    var total = mins * 60 + secs;
+
+    function updateTimer() {
+      if (total <= 0) { total = 0; }
+      var m = Math.floor(total / 60);
+      var s = total % 60;
+      display.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+      if (total > 0) {
+        total--;
+        setTimeout(updateTimer, 1000);
+      }
+    }
+    updateTimer();
+  }
+
+  /* ===================================
+     MARQUEE — clone for seamless loop
+     =================================== */
+  var marquee = document.getElementById('pt-marquee');
+  if (marquee) {
+    var clone = marquee.cloneNode(true);
+    clone.removeAttribute('id');
+    marquee.parentNode.appendChild(clone);
+  }
+
+  /* ===================================
+     REVIEW CAROUSEL (Desktop)
+     =================================== */
+  var track = document.getElementById('pt-reviews-track');
+  var prevBtn = document.getElementById('pt-review-prev');
+  var nextBtn = document.getElementById('pt-review-next');
+
+  if (track && prevBtn && nextBtn) {
+    var slides = track.querySelectorAll('.pt-review-slide');
+    var currentIndex = 0;
+    var slidesPerView = 3;
+    var maxIndex = Math.max(0, slides.length - slidesPerView);
+
+    function moveCarousel() {
+      var pct = -(currentIndex * (100 / slidesPerView));
+      track.style.transform = 'translateX(' + pct + '%)';
+    }
+
+    prevBtn.addEventListener('click', function() {
+      currentIndex = Math.max(0, currentIndex - 1);
+      moveCarousel();
+    });
+
+    nextBtn.addEventListener('click', function() {
+      currentIndex = Math.min(maxIndex, currentIndex + 1);
+      moveCarousel();
+    });
+  }
+
+  /* ===================================
+     REVIEW CAROUSEL (Mobile — clone cards)
+     =================================== */
+  var mobileContainer = document.getElementById('pt-reviews-mobile');
+  if (mobileContainer && track) {
+    var cards = track.querySelectorAll('.pt-review-card');
+    cards.forEach(function(card) {
+      var wrap = document.createElement('div');
+      wrap.className = 'pt-review-card-wrap';
+      wrap.appendChild(card.cloneNode(true));
+      mobileContainer.appendChild(wrap);
+    });
+  }
+
+  /* ===================================
+     FAQ ACCORDION
+     =================================== */
+  document.querySelectorAll('.pt-faq-q').forEach(function(q) {
+    q.addEventListener('click', function() {
+      var item = this.parentElement;
+      var wasOpen = item.classList.contains('pt-open');
+      document.querySelectorAll('.pt-faq-item.pt-open').forEach(function(openItem) {
+        openItem.classList.remove('pt-open');
+      });
+      if (!wasOpen) {
+        item.classList.add('pt-open');
+      }
+    });
+  });
+
+  /* ===================================
+     BUY BOX — Thumbnail image switcher
+     =================================== */
+  var mainImg = document.getElementById('pt-buybox-main');
+  var thumbs = document.querySelectorAll('.pt-buybox-thumb');
+  if (mainImg && thumbs.length) {
+    thumbs.forEach(function(thumb) {
+      thumb.addEventListener('click', function() {
+        thumbs.forEach(function(t) { t.classList.remove('pt-active'); });
+        this.classList.add('pt-active');
+        mainImg.src = this.getAttribute('data-full');
+      });
+    });
+  }
+
+  /* ===================================
+     MOBILE STICKY CTA — show/hide
+     =================================== */
+  var mobileCta = document.getElementById('pt-mobile-sticky');
+  var footer = document.getElementById('pt-footer');
+  var footerVisible = false;
+
+  if (footer && mobileCta && window.IntersectionObserver) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        footerVisible = entry.isIntersecting;
+        if (footerVisible) {
+          mobileCta.classList.remove('pt-visible');
+        }
+      });
+    }, { threshold: 0 });
+    observer.observe(footer);
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        if (mobileCta) {
+          if (window.scrollY > 150 && !footerVisible) {
+            mobileCta.classList.add('pt-visible');
+          } else if (footerVisible || window.scrollY <= 150) {
+            mobileCta.classList.remove('pt-visible');
+          }
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  /* ===================================
+     SMOOTH SCROLL for anchor links
+     =================================== */
+  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        var offset = 60;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
+  });
+
+})();
+</script>
+</body>
+</html>
